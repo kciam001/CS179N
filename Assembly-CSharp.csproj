@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{1040D89D-502C-8B60-F509-2B395D95C175}</ProjectGuid>
+    <ProjectGuid>{B540625A-0039-FA60-CF46-FE5D0A7AFF4B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -65,6 +65,9 @@
     <Compile Include="Assets\Dungeon Pack\Scripts\Rotator.cs" />
     <Compile Include="Assets\Dungeon Pack\Scripts\SpikeTrapDemo.cs" />
     <Compile Include="Assets\Dungeon Pack\Scripts\TrapDoorDemo.cs" />
+    <Compile Include="Assets\hero.cs" />
+    <Compile Include="Assets\ThirdPersonCameraController.cs" />
+    <Compile Include="Assets\ThirdPersonCharacterController.cs" />
     <None Include="Assets\MegaPack1Lite\RomanCityPack1Lite\README.txt" />
     <None Include="Assets\Free Low Poly Desert Pack\Materials\Shaders\Vertex_Color_Unlit.shader" />
     <None Include="Assets\Free Low Poly Desert Pack\Materials\Shaders\Vertex_Color_Basic.shader" />
@@ -74,19 +77,19 @@
     <None Include="Assets\BOXOPHOBIC\Skybox Cubemap Extended\Shaders\Skybox Cubemap Extended.shader" />
     <None Include="Assets\MegaPack1Lite\GreekPack1Lite\README.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>/Users/KevinCiampaglia/Desktop/School/Year4/Spring/CS179N/CS179N/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>/Users/KevinCiampaglia/Desktop/School/Year4/Spring/CS179N/CS179N/Desert_Arena/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>/Users/KevinCiampaglia/Desktop/School/Year4/Spring/CS179N/CS179N/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>/Users/KevinCiampaglia/Desktop/School/Year4/Spring/CS179N/CS179N/Desert_Arena/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>/Users/KevinCiampaglia/Desktop/School/Year4/Spring/CS179N/CS179N/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>/Users/KevinCiampaglia/Desktop/School/Year4/Spring/CS179N/CS179N/Desert_Arena/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>/Users/KevinCiampaglia/Desktop/School/Year4/Spring/CS179N/CS179N/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>/Users/KevinCiampaglia/Desktop/School/Year4/Spring/CS179N/CS179N/Desert_Arena/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>/Users/KevinCiampaglia/Desktop/School/Year4/Spring/CS179N/CS179N/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>/Users/KevinCiampaglia/Desktop/School/Year4/Spring/CS179N/CS179N/Desert_Arena/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -293,13 +296,13 @@
       <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>/Users/KevinCiampaglia/Desktop/School/Year4/Spring/CS179N/CS179N/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>/Users/KevinCiampaglia/Desktop/School/Year4/Spring/CS179N/CS179N/Desert_Arena/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>/Users/KevinCiampaglia/Desktop/School/Year4/Spring/CS179N/CS179N/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>/Users/KevinCiampaglia/Desktop/School/Year4/Spring/CS179N/CS179N/Desert_Arena/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>/Users/KevinCiampaglia/Desktop/School/Year4/Spring/CS179N/CS179N/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>/Users/KevinCiampaglia/Desktop/School/Year4/Spring/CS179N/CS179N/Desert_Arena/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>/Applications/Unity/Unity.app/Contents/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
