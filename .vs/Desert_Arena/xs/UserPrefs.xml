@@ -1,10 +1,12 @@
 ﻿<Properties StartupConfiguration="{B540625A-0039-FA60-CF46-FE5D0A7AFF4B}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ThirdPersonCharacterController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/character_animator.cs">
     <Files>
       <File FileName="Assets/hero.cs" Line="1" Column="1" />
-      <File FileName="Assets/ThirdPersonCharacterController.cs" Line="22" Column="2" />
-      <File FileName="Assets/ThirdPersonCameraController.cs" Line="39" Column="10" />
+      <File FileName="Assets/ThirdPersonCharacterController.cs" Line="23" Column="1" />
+      <File FileName="Assets/ThirdPersonCameraController.cs" Line="1" Column="26" />
+      <File FileName="Assets/character.cs" Line="21" Column="2" />
+      <File FileName="Assets/character_animator.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
