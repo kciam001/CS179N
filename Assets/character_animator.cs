@@ -15,7 +15,8 @@ public class character_animator : MonoBehaviour
     void Update()
     {
         bool isWalkingPressed;
-        if (Input.GetKey("up") || Input.GetKey("down") || Input.GetKey("left") || Input.GetKey("right"))
+        if (Input.GetKey("up") || Input.GetKey("down") || Input.GetKey("left") || Input.GetKey("right")
+           || Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"))
             isWalkingPressed = true;
         else
             isWalkingPressed = false;
