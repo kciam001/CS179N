@@ -67,7 +67,16 @@
     <Compile Include="Assets\Dungeon Pack\Scripts\Rotator.cs" />
     <Compile Include="Assets\Dungeon Pack\Scripts\SpikeTrapDemo.cs" />
     <Compile Include="Assets\Dungeon Pack\Scripts\TrapDoorDemo.cs" />
+    <Compile Include="Assets\EnemyController.cs" />
     <Compile Include="Assets\hero.cs" />
+    <Compile Include="Assets\Scripts\character.cs" />
+    <Compile Include="Assets\Scripts\character_animator.cs" />
+    <Compile Include="Assets\Scripts\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\PlayerManager.cs" />
+    <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\ThirdPersonCameraController.cs" />
+    <Compile Include="Assets\Scripts\ThirdPersonCharacterController.cs" />
     <Compile Include="Assets\ThirdPersonCameraController.cs" />
     <Compile Include="Assets\ThirdPersonCharacterController.cs" />
     <None Include="Assets\MegaPack1Lite\RomanCityPack1Lite\README.txt" />
