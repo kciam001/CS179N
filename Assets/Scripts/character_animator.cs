@@ -22,6 +22,6 @@ public class character_animator : MonoBehaviour
             isWalkingPressed = false;
 
         myAnimator.SetBool("IsWalking", isWalkingPressed);
-        Debug.Log("Test: " + isWalkingPressed);
+        // Debug.Log("Test: " + isWalkingPressed);
     }
 }
