@@ -60,25 +60,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\character.cs" />
-    <Compile Include="Assets\character_animator.cs" />
     <Compile Include="Assets\Dungeon Pack\Scripts\ChestDemo.cs" />
     <Compile Include="Assets\Dungeon Pack\Scripts\MaterialMover.cs" />
     <Compile Include="Assets\Dungeon Pack\Scripts\Rotator.cs" />
     <Compile Include="Assets\Dungeon Pack\Scripts\SpikeTrapDemo.cs" />
     <Compile Include="Assets\Dungeon Pack\Scripts\TrapDoorDemo.cs" />
-    <Compile Include="Assets\EnemyController.cs" />
-    <Compile Include="Assets\hero.cs" />
+    <Compile Include="Assets\Scripts\AITest.cs" />
     <Compile Include="Assets\Scripts\character.cs" />
     <Compile Include="Assets\Scripts\character_animator.cs" />
+    <Compile Include="Assets\Scripts\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\ThirdPersonCameraController.cs" />
     <Compile Include="Assets\Scripts\ThirdPersonCharacterController.cs" />
-    <Compile Include="Assets\ThirdPersonCameraController.cs" />
-    <Compile Include="Assets\ThirdPersonCharacterController.cs" />
     <None Include="Assets\MegaPack1Lite\RomanCityPack1Lite\README.txt" />
     <None Include="Assets\Free Low Poly Desert Pack\Materials\Shaders\Vertex_Color_Unlit.shader" />
     <None Include="Assets\Free Low Poly Desert Pack\Materials\Shaders\Vertex_Color_Basic.shader" />
