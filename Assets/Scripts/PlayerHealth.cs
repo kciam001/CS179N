@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cur_health = 100.0f;
+        cur_health = 5.0f;
         SetCountText ();
     }
 
@@ -21,12 +21,26 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public void TakeDamage(float damage){
-        cur_health -= damage;
-        SetCountText ();
-        // Debug.Log(cur_health);
+        if (cur_health >= 0)
+        {
+            cur_health -= 5 * damage;
+            if (cur_health <= 0)
+            {
+                cur_health = -1;
+            }
+        }
+        SetCountText();
     }
 
-    void SetCountText(){
-        health_text.text = "Health: " + cur_health.ToString();
+    void SetCountText()
+    {
+        if (cur_health > 0)
+        {
+            health_text.text = "Health: " + cur_health.ToString();
+        }
+        else
+        {
+            health_text.text = "GameOver";
+        }
     }
 }

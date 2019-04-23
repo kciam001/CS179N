@@ -6,6 +6,8 @@ public class character_animator : MonoBehaviour
 {
     Animator myAnimator;
     float elapsedTime;
+    public PlayerHealth health;
+    public float cur_health;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +18,15 @@ public class character_animator : MonoBehaviour
     void Update()
     {
         bool isWalkingPressed = CheckWalking();
-        bool isAttackPressed = CheckAttack(); 
+        bool isAttackPressed = CheckAttack();
+        bool isKilled = CheckKilled();
+        cur_health = health.cur_health;
+        Debug.Log("Test: ");
 
 
         myAnimator.SetBool("IsWalking", isWalkingPressed);
         myAnimator.SetBool("IsAttacking", isAttackPressed);
+        myAnimator.SetBool("IsKilled", isKilled);
         Debug.Log("Test: " + isAttackPressed);
 
     }
@@ -41,5 +47,17 @@ public class character_animator : MonoBehaviour
             return true;
         else
             return false;
+    }
+    bool CheckKilled()
+    {
+        Debug.Log("Test: " + cur_health);
+        if (cur_health == -1)
+        {
+           return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
