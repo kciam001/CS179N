@@ -32,6 +32,10 @@ public class PlayerHealth : MonoBehaviour
         SetCountText();
     }
 
+    public float GetHealth(){
+        return cur_health;
+    }
+
     void SetCountText()
     {
         if (cur_health > 0)

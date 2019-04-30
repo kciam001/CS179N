@@ -21,7 +21,7 @@ public class AITest : MonoBehaviour
     void Update()
     {
         float dist = Vector3.Distance(player.transform.position, this.transform.position);
-        if (dist < 15) //awake range
+        if (dist < 100) //awake range
         {
             transform.LookAt(player.transform.position);
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * 0.01f);
@@ -36,11 +36,11 @@ public class AITest : MonoBehaviour
                 anim.SetBool("isRunning", false);
             }
         }
-        else //idle range
-        {
-            anim.SetBool("isIdle", true);
-            anim.SetBool("isRunning", false);
-            //anim.SetBool("isAttacking", false);
-        }
+        // else //idle range
+        // {
+        //     anim.SetBool("isIdle", true);
+        //     anim.SetBool("isRunning", false);
+        //     //anim.SetBool("isAttacking", false);
+        // }
     }
 }
