@@ -21,13 +21,13 @@ public class character_animator : MonoBehaviour
         bool isAttackPressed = CheckAttack();
         bool isKilled = CheckKilled();
         cur_health = health.cur_health;
-        Debug.Log("Test: ");
+        //Debug.Log("Test: ");
 
 
         myAnimator.SetBool("IsWalking", isWalkingPressed);
         myAnimator.SetBool("IsAttacking", isAttackPressed);
         myAnimator.SetBool("IsKilled", isKilled);
-        Debug.Log("Test: " + isAttackPressed);
+        //Debug.Log("Test: " + isAttackPressed);
 
     }
 
@@ -50,7 +50,7 @@ public class character_animator : MonoBehaviour
     }
     bool CheckKilled()
     {
-        Debug.Log("Test: " + cur_health);
+        // Debug.Log("Test: " + cur_health);
         if (cur_health == -1)
         {
            return true;

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour
+public class PlayerAttack : MonoBehaviour
 {
     private float damage;
     private float stayCount = 0.0f;
+    public Collider coll;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,20 +16,28 @@ public class EnemyAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void OnTriggerStay(Collider other)
+    void OnTriggerStay(Collider coll)
     {
-        if(other.tag == "Player"){
-            if(stayCount > 3.0f){
+        if (coll.tag == "Enemy")
+        {
+            if (stayCount > 0.5f)
+            {
                 //Debug.Log("damage");
-                other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+                if (Input.GetMouseButtonDown(0))
+                {
+                    coll.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
+                    // Debug.Log("damage");
+                }
                 stayCount = 0.0f;
-            }else{
+            }
+            else
+            {
                 stayCount += Time.deltaTime;
             }
         }
-        
+
     }
 }
