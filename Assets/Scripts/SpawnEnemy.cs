@@ -1,47 +1,76 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnEnemy : MonoBehaviour
 {
+    // Used to distinguish enemy and player
     public GameObject enemy;
     public GameObject player;
-    private int numSpawn;
-    private Vector3 spawnPos;
-    private Vector3 correctPos;
+    public Transform parent;
+    
+    
+    // Used for orientation and position of enemy
     private Quaternion spawnRot;
-    private float stayCount = 0.0f;
-    // Start is called before the first frame update
+    public Transform[] spawnPoints; 
+
+    // Used for game mechanics
+    private int numSpawn;
+    public int currSpawn;
+    
+    private int roundNum;
+    public Text round;
     void Start()
     {
-        numSpawn = 5;
-        spawnPos = this.transform.position;
-        correctPos = spawnPos - new Vector3(0, 2, 0);
+        
         spawnRot = this.transform.rotation;
+        
+        // Intitialize spawn numbers
+        roundNum = 1;
+        numSpawn = roundNum * 2;
+        currSpawn = numSpawn;
+        round.text = "Round: " + roundNum.ToString();
+        StartCoroutine("StartSpawn");
     }
 
     void Update(){
-        if (stayCount > 5.0f)
-        {
-            stayCount = 0.0f;
-            Spawn();
-        }
-        else
-        {
-            stayCount += Time.deltaTime;
+        if(currSpawn <= 0){
+            StartCoroutine("NewRound");
         }
     }
 
-    void Spawn()
+    IEnumerator StartSpawn()
     {
-        // If the player has no health left...
-        if(player.gameObject.GetComponent<PlayerHealth>().GetHealth() <= 0f)
-        {
-            // ... exit the function.
-            return;
+        for(int i = 0; i < numSpawn; i++){
+            SpawnOne();
+            yield return new WaitForSeconds(5);
         }
-        //Quaternion qRot = Quaternion.Euler(spawnRot);
-        Instantiate(enemy, correctPos, spawnRot);
-        numSpawn--;
+    }
+
+    IEnumerator NewRound()
+    {
+        roundNum++;
+        numSpawn = roundNum * 2;
+        currSpawn = numSpawn;
+        round.text = "Round: " + roundNum.ToString();
+        StartCoroutine("StartSpawn");
+        yield return new WaitForSeconds(10);
+    }
+
+    void SpawnOne()
+    {
+        int spawnPointIndex = Random.Range (0, spawnPoints.Length);
+        Instantiate (enemy, spawnPoints[spawnPointIndex].position, spawnRot);
+    }
+
+    public void UpdateCount()
+    {
+        currSpawn--;
+    }
+
+    public int GetRound()
+    {
+        return roundNum;
     }
 }
