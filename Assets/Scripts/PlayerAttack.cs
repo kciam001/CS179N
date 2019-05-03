@@ -4,39 +4,36 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private float damage;
-    private float stayCount = 0.0f;
+    private float attackDamage = 5.0f;
+    private float attackCooldown = 3.0f;
+    private float timer;
+    private bool canAttack = false;
     public Collider coll;
     // Start is called before the first frame update
     void Start()
     {
-        damage = 5.0f;
+        timer = attackCooldown;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        timer -= Time.deltaTime;
+        if(timer < 0){
+            if(Input.GetMouseButtonDown(0)){
+                canAttack = true;
+                timer = attackCooldown;
+            }
+        }
     }
 
-    void OnTriggerStay(Collider coll)
+    void OnTriggerEnter(Collider coll)
     {
-        if (coll.tag == "Enemy")
+        Debug.Log("Entered");
+        if (coll.tag == "Enemy" && canAttack)
         {
-            if (stayCount > 0.5f)
-            {
-                //Debug.Log("damage");
-                if (Input.GetMouseButtonDown(0))
-                {
-                    coll.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
-                    // Debug.Log("damage");
-                }
-                stayCount = 0.0f;
-            }
-            else
-            {
-                stayCount += Time.deltaTime;
-            }
+            coll.gameObject.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
+            canAttack = false;
         }
 
     }

@@ -8,13 +8,17 @@ public class SpawnEnemy : MonoBehaviour
     // Used to distinguish enemy and player
     public GameObject enemy;
     public GameObject player;
-    public Transform parent;
-    public GameObject roundControl;
-    
+
+    public enum SpawnState {SPAWNING, WAITING, NEWROUND};
+    public SpawnState state = SpawnState.NEWROUND;
+
+    private int roundNum = 1;
+    public Text round;
+    private float countdown = 10.0f;
+
     // Used for orientation and position of enemy
     private Quaternion spawnRot;
     public Transform[] spawnPoints; 
-    private bool wait = true;
 
     // Used for game mechanics
     private int numSpawn;
@@ -30,24 +34,47 @@ public class SpawnEnemy : MonoBehaviour
     }
 
     void Update(){
-        if(currSpawn <= 0 && wait){
-            roundControl.gameObject.GetComponent<UpdateRound>().NewRound();
-            wait = false;
+        if(state == SpawnState.WAITING){
+            // Check if enemies are alive
+            if(currSpawn == 0){
+                // Begin new round
+                state = SpawnState.NEWROUND;
+                StartNewRound();
+            }else{
+                return;
+            }
+        }else if(state == SpawnState.NEWROUND){
+            if(countdown <= 0){
+                if(state != SpawnState.SPAWNING){
+                    // State spawning
+                    PrintRound();
+                    StartCoroutine("StartSpawn");
+                }
+            }else{
+                round.text = "Round Starting in " + countdown.ToString("0.0");
+                countdown -= Time.deltaTime;
+            }
         }
     }
 
-    public IEnumerator StartSpawn()
+    IEnumerator StartSpawn()
     {
+        state = SpawnState.SPAWNING;
+
         for(int i = 0; i < numSpawn; i++){
             SpawnOne();
             yield return new WaitForSeconds(5);
         }
+
+        state = SpawnState.WAITING;
     }
 
-    public void StartNewRound()
+    void StartNewRound()
     {
         numSpawn *= 2;
         currSpawn = numSpawn;
+        roundNum++;
+        countdown = 10.0f;
     }
 
     void SpawnOne()
@@ -60,7 +87,7 @@ public class SpawnEnemy : MonoBehaviour
         currSpawn--;
     }
 
-    public void StopWait(){
-        wait = true;
+    void PrintRound(){
+        round.text = "Round: " + roundNum.ToString();
     }
 }

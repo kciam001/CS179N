@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
     public float cur_health;
     public GameObject enemy;
     public GameObject spawner;
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,9 +29,10 @@ public class EnemyHealth : MonoBehaviour
             if (cur_health <= 0)
             {
                 cur_health = -1;
-                spawner.gameObject.GetComponent<SpawnEnemy>().UpdateCount();
                 // INSERT DEATH ANIMATION HERE
                 Destroy(enemy);
+                spawner.gameObject.GetComponent<SpawnEnemy>().UpdateCount();
+                player.gameObject.GetComponent<Score>().IncrementScore();
             }
         }
     }
