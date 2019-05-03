@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cur_health = 20.0f;
+        cur_health = 100.0f;
         SetCountText ();
     }
 

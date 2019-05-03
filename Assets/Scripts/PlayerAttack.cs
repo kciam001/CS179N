@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        damage = 3.0f;
+        damage = 5.0f;
     }
 
     // Update is called once per frame

@@ -9,38 +9,34 @@ public class SpawnEnemy : MonoBehaviour
     public GameObject enemy;
     public GameObject player;
     public Transform parent;
-    
+    public GameObject roundControl;
     
     // Used for orientation and position of enemy
     private Quaternion spawnRot;
     public Transform[] spawnPoints; 
+    private bool wait = true;
 
     // Used for game mechanics
     private int numSpawn;
     public int currSpawn;
-    
-    private int roundNum;
-    public Text round;
+
     void Start()
     {
-        
         spawnRot = this.transform.rotation;
         
         // Intitialize spawn numbers
-        roundNum = 1;
-        numSpawn = roundNum * 2;
+        numSpawn = 2;
         currSpawn = numSpawn;
-        round.text = "Round: " + roundNum.ToString();
-        StartCoroutine("StartSpawn");
     }
 
     void Update(){
-        if(currSpawn <= 0){
-            StartCoroutine("NewRound");
+        if(currSpawn <= 0 && wait){
+            roundControl.gameObject.GetComponent<UpdateRound>().NewRound();
+            wait = false;
         }
     }
 
-    IEnumerator StartSpawn()
+    public IEnumerator StartSpawn()
     {
         for(int i = 0; i < numSpawn; i++){
             SpawnOne();
@@ -48,14 +44,10 @@ public class SpawnEnemy : MonoBehaviour
         }
     }
 
-    IEnumerator NewRound()
+    public void StartNewRound()
     {
-        roundNum++;
-        numSpawn = roundNum * 2;
+        numSpawn *= 2;
         currSpawn = numSpawn;
-        round.text = "Round: " + roundNum.ToString();
-        StartCoroutine("StartSpawn");
-        yield return new WaitForSeconds(10);
     }
 
     void SpawnOne()
@@ -64,13 +56,11 @@ public class SpawnEnemy : MonoBehaviour
         Instantiate (enemy, spawnPoints[spawnPointIndex].position, spawnRot);
     }
 
-    public void UpdateCount()
-    {
+    public void UpdateCount(){
         currSpawn--;
     }
 
-    public int GetRound()
-    {
-        return roundNum;
+    public void StopWait(){
+        wait = true;
     }
 }

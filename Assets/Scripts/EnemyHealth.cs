@@ -29,6 +29,7 @@ public class EnemyHealth : MonoBehaviour
             {
                 cur_health = -1;
                 spawner.gameObject.GetComponent<SpawnEnemy>().UpdateCount();
+                // INSERT DEATH ANIMATION HERE
                 Destroy(enemy);
             }
         }

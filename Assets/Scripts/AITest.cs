@@ -21,7 +21,7 @@ public class AITest : MonoBehaviour
     void Update()
     {
         float dist = Vector3.Distance(player.transform.position, this.transform.position);
-        if (dist < 15) //awake range
+        if (dist < 100) //awake range
         {
             transform.LookAt(player.transform.position);
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * 0.01f);
