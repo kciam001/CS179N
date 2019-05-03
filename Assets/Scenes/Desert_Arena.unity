@@ -1298,15 +1298,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400050, guid: aad05534a7ba0dd49b8c54ce188308ec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 60.5
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 400050, guid: aad05534a7ba0dd49b8c54ce188308ec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.391
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400050, guid: aad05534a7ba0dd49b8c54ce188308ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -107
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 400050, guid: aad05534a7ba0dd49b8c54ce188308ec, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2059,8 +2059,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 200, y: 54}
-  m_SizeDelta: {x: 500, y: 75}
+  m_AnchoredPosition: {x: -26, y: 54}
+  m_SizeDelta: {x: 700, y: 75}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1451456427
 MonoBehaviour:
@@ -2442,6 +2442,51 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1684443642}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1710811196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1710811198}
+  - component: {fileID: 1710811197}
+  m_Layer: 0
+  m_Name: RoundController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1710811197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710811196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e6e6da023ff5c644957f867bd419f8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  round: {fileID: 1451456427}
+  spawner: {fileID: 2070110293}
+--- !u!4 &1710811198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710811196}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2208.8176, y: 2.4626465, z: -285.9542}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1757326326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2658,7 +2703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1835884089687716}
-  speed: 1
+  speed: 4
 --- !u!135 &2063004786
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2745,13 +2790,13 @@ MonoBehaviour:
   enemy: {fileID: 2063004780}
   player: {fileID: 1835884089687716}
   parent: {fileID: 2070110294}
+  roundControl: {fileID: 1710811196}
   spawnPoints:
   - {fileID: 660756955}
   - {fileID: 1215258003}
   - {fileID: 624649588}
   - {fileID: 743303125}
   currSpawn: 0
-  round: {fileID: 1451456427}
 --- !u!1 &1000826567366356
 GameObject:
   m_ObjectHideFlags: 0
@@ -3766,7 +3811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a008744acda8b14788fb12b05533bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 6
 --- !u!114 &1835884089687720
 MonoBehaviour:
   m_ObjectHideFlags: 0
