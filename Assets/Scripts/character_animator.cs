@@ -20,6 +20,7 @@ public class character_animator : MonoBehaviour
         bool isWalkingPressed = CheckWalking();
         bool isAttackPressed = CheckAttack();
         bool isKilled = CheckKilled();
+        bool isSprinting = CheckSprint();
         cur_health = health.cur_health;
         //Debug.Log("Test: ");
 
@@ -27,6 +28,7 @@ public class character_animator : MonoBehaviour
         myAnimator.SetBool("IsWalking", isWalkingPressed);
         myAnimator.SetBool("IsAttacking", isAttackPressed);
         myAnimator.SetBool("IsKilled", isKilled);
+        myAnimator.SetBool("IsSprinting", isSprinting);
         //Debug.Log("Test: " + isAttackPressed);
 
     }
@@ -52,12 +54,15 @@ public class character_animator : MonoBehaviour
     {
         // Debug.Log("Test: " + cur_health);
         if (cur_health == -1)
-        {
-           return true;
-        }
+            return true;
         else
-        {
             return false;
-        }
+    }
+    bool CheckSprint()
+    {
+        if (Input.GetKey(KeyCode.LeftShift) && !character.stamina_reset)
+            return true;
+        else
+            return false;
     }
 }
