@@ -29,18 +29,24 @@ public class character : MonoBehaviour
     void Update()
     {
         Move();
-        Debug.Log(stamina_reset);
     }
 
     void Move()
     {
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
+
+        //sprint
         if (Input.GetKey(KeyCode.LeftShift) && stamina < max_stamina && !stamina_reset)
         {
-      
+
             playerMovement = new Vector3(x, 0f, y) * speed * sprint_factor * Time.deltaTime;
             stamina += stamina_factor * Time.deltaTime;
+        }
+        else if (stamina < max_stamina && stamina > 0 && !stamina_reset)
+        {
+            playerMovement = new Vector3(x, 0f, y) * speed * Time.deltaTime;
+            stamina -= (stamina_factor * 0.25f) * Time.deltaTime;
         }
         else
         {
@@ -54,12 +60,13 @@ public class character : MonoBehaviour
                 stamina -= stamina_factor * Time.deltaTime;
             if (stamina <= 0)
                 stamina_reset = false;
-            
+
         }
         transform.Translate(playerMovement, Space.Self);
     }
 
-     void OnGUI()
+    //stamina bar
+    void OnGUI()
     {
         float ratio = (max_stamina - stamina) / max_stamina;
         float rect_width = ratio * Screen.width / 3;
