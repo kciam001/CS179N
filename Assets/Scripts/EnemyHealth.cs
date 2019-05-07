@@ -5,20 +5,27 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
+    private float max_health;
     public float cur_health;
     public GameObject spawner;
     public GameObject enemy;
     public GameObject player;
+    public Image healthBar;
     // Start is called before the first frame update
     void Start()
     {
-        cur_health = 5.0f;
+        max_health = 15.0f;
+        cur_health = 15.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(cur_health <= 0){
+            healthBar.fillAmount = 0;
+        }else{
+            healthBar.fillAmount = cur_health / max_health;
+        }  
     }
 
     public void TakeDamage(float damage)
