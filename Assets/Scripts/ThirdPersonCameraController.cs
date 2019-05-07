@@ -4,38 +4,63 @@ using UnityEngine;
 
 public class ThirdPersonCameraController : MonoBehaviour
 {
-    public float rotationSpeed = 1;
-    public Transform target, player;
-    float mouseX, mouseY;
-    // Start is called before the first frame update
+    public float CameraMoveSpeed = 120.0f;
+    public Transform target;
+    public Transform player;
+    Vector3 FollowPosition;
+    public float clampAngle = 80.0f;
+    public float inputSensitivity = 150.0f;
+    public float mouseX;
+    public float mouseY;
+    public float finalInputX;
+    public float finalInputZ;
+    public float smoothX;
+    public float smoothY;
+    private float rotY = 0.0f;
+    private float rotX = 0.0f;
+
     void Start()
     {
-        Cursor.visible = false;
+        Vector3 rot = transform.localRotation.eulerAngles;
+        rotY = rot.y;
+        rotX = rot.x;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
-    // Update is called once per frame
+    void Update()
+    {
+        float inputX = Input.GetAxis("RightStickHorizontal");
+        float inputZ = Input.GetAxis("RightStickVertical");
+        mouseX = Input.GetAxis("Mouse X");
+        mouseY = Input.GetAxis("Mouse Y");
+        finalInputX = inputX + mouseX;
+        finalInputZ = inputZ + mouseY;
+
+        rotY += finalInputX * inputSensitivity * Time.deltaTime;
+        rotX += finalInputZ * inputSensitivity * Time.deltaTime;
+
+        rotX = Mathf.Clamp(rotX, -clampAngle, clampAngle);
+
+        Quaternion localRotation = Quaternion.Euler(rotX, rotY, 0.0f);
+
+        transform.rotation = localRotation;
+
+
+    }
+
     void LateUpdate()
     {
-        CameraControl();
+        CameraUpdater();
     }
 
-    void CameraControl()
+    void CameraUpdater()
     {
-        mouseX += Input.GetAxis("Mouse X") * rotationSpeed;
-        mouseY -= Input.GetAxis("Mouse Y") * rotationSpeed;
-        mouseY = Mathf.Clamp(mouseY, -35, 60);
 
-        transform.LookAt(target);
+        //move towards the game object that is the target
+        float step = CameraMoveSpeed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+        player.rotation = Quaternion.Euler(0, rotY, 0);
 
-        if (Input.GetKey(KeyCode.RightShift))
-        {
-            target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
-        }
-        else
-        {
-            target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
-            player.rotation = Quaternion.Euler(0, mouseX, 0);
-        }
     }
 }
