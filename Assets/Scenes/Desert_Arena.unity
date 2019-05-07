@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.24637042, g: 0.9619713, b: 1.4599178, a: 1}
+  m_IndirectSpecularColor: {r: 0.24613184, g: 0.9615184, b: 1.4585252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5959,6 +5959,7 @@ MonoBehaviour:
   spawner: {fileID: 2070110293}
   enemy: {fileID: 2063004780}
   player: {fileID: 1835884089687716}
+  healthBar: {fileID: 814770753}
 --- !u!1001 &2067952721
 PrefabInstance:
   m_ObjectHideFlags: 0

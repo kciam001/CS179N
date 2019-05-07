@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class character_animator : MonoBehaviour
 {
-    Animator myAnimator;
+    public Animator myAnimator;
     float elapsedTime;
     public PlayerHealth health;
     public float cur_health;
@@ -27,7 +27,7 @@ public class character_animator : MonoBehaviour
         cur_health = health.cur_health;
         //Debug.Log("Test: ");
 
-
+        //Debug.Log(isAttackPressed);
         myAnimator.SetBool("IsWalking", isWalkingPressed);
         myAnimator.SetBool("IsAttacking", isAttackPressed);
         myAnimator.SetBool("IsKilled", isKilled);
@@ -48,10 +48,13 @@ public class character_animator : MonoBehaviour
 
 
     }
-    bool CheckAttack()
+    public bool CheckAttack()
     {
         if (Input.GetMouseButtonDown(0))
+        {
+
             return true;
+        }
         else
             return false;
     }
@@ -72,7 +75,6 @@ public class character_animator : MonoBehaviour
     }
     public void TakeDamage()
     {
-        Debug.Log("TEST");
         isHurt = true;
         myAnimator.SetBool("IsHurt", isHurt);
     }

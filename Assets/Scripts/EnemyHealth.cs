@@ -37,8 +37,8 @@ public class EnemyHealth : MonoBehaviour
                 if (cur_health <= 0)
                 {
                     cur_health = -1;
-                    // INSERT DEATH ANIMATION HERE
-                    Destroy(enemy);
+                    enemy.gameObject.GetComponent<AITest>().TriggerDeath();
+                    Destroy(enemy, 1f);
                     spawner.gameObject.GetComponent<SpawnEnemy>().UpdateCount();
                     player.gameObject.GetComponent<Score>().IncrementScore();
                 }

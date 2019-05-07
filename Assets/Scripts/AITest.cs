@@ -7,6 +7,7 @@ public class AITest : MonoBehaviour
     public GameObject player;
     public float speed;
     public Animator anim;
+    bool isHurt = false;
    
     // Start is called before the first frame update
     void Start()
@@ -42,5 +43,15 @@ public class AITest : MonoBehaviour
             anim.SetBool("isRunning", false);
             //anim.SetBool("isAttacking", false);
         }
+    }
+    public void TriggerDeath()
+    {
+        anim.SetBool("isDead", true);
+    }
+    public void TakeDamage()
+    {
+        isHurt = true;
+        anim.SetBool("IsHurt", isHurt);
+
     }
 }

@@ -21,7 +21,7 @@ public class EnemyAttack : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         if(other.tag == "Player"){
-            if(stayCount > 1.5f){
+            if(stayCount > 0.5f){
                 //Debug.Log("damage");
                 other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
 

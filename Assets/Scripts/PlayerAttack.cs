@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     private float attackDamage = 5.0f;
-    private float attackCooldown = 3.0f;
+    private float attackCooldown = 0.5f;
     private float timer;
     private bool canAttack = false;
     public Collider coll;
@@ -19,19 +19,29 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
-        if(timer < 0){
-            if(Input.GetMouseButtonDown(0)){
-                canAttack = true;
-                timer = attackCooldown;
-            }
+        bool isAttacking = this.gameObject.GetComponent<character_animator>().myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack");
+        Debug.Log(canAttack);
+        if (timer < 0 && isAttacking)
+        {
+
+            canAttack = true;
+            this.gameObject.GetComponent<character_animator>().CheckAttack();
+            timer = attackCooldown;
         }
+            
+        else
+        {
+            canAttack = false;
+        }
+
     }
 
-    void OnTriggerEnter(Collider coll)
+    void OnTriggerStay(Collider coll)
     {
         Debug.Log("Entered");
         if (coll.tag == "Enemy" && canAttack)
         {
+            coll.gameObject.GetComponent<AITest>().TakeDamage();
             coll.gameObject.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
             canAttack = false;
         }
