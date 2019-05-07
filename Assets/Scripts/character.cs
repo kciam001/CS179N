@@ -8,7 +8,7 @@ public class character : MonoBehaviour
     int sprint_factor = 3;
     int stamina_factor = 10;
     float stamina = 0;
-    float timer = 0;
+    // float timer = 0;
     float max_stamina = 10;
     public static bool stamina_reset = false;
     Rect stamina_rect;

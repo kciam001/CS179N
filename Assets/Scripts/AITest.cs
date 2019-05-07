@@ -6,7 +6,7 @@ public class AITest : MonoBehaviour
 {
     public GameObject player;
     public float speed;
-    static Animator anim;
+    public Animator anim;
    
     // Start is called before the first frame update
     void Start()

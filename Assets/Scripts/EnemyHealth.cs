@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class EnemyHealth : MonoBehaviour
 {
     public float cur_health;
-    public GameObject enemy;
     public GameObject spawner;
+    public GameObject enemy;
     public GameObject player;
     // Start is called before the first frame update
     void Start()
@@ -23,16 +23,18 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (cur_health >= 0)
-        {
-            cur_health -= damage;
-            if (cur_health <= 0)
+        if(enemy != null){
+            if (cur_health >= 0)
             {
-                cur_health = -1;
-                // INSERT DEATH ANIMATION HERE
-                Destroy(enemy);
-                spawner.gameObject.GetComponent<SpawnEnemy>().UpdateCount();
-                player.gameObject.GetComponent<Score>().IncrementScore();
+                cur_health -= damage;
+                if (cur_health <= 0)
+                {
+                    cur_health = -1;
+                    // INSERT DEATH ANIMATION HERE
+                    Destroy(enemy);
+                    spawner.gameObject.GetComponent<SpawnEnemy>().UpdateCount();
+                    player.gameObject.GetComponent<Score>().IncrementScore();
+                }
             }
         }
     }
