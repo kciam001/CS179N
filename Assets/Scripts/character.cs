@@ -7,7 +7,7 @@ public class character : MonoBehaviour
     public float speed = 1;
     int sprint_factor = 3;
     int stamina_factor = 10;
-    float stamina = 1;
+    float stamina = 0;
     float timer = 0;
     float max_stamina = 10;
     public static bool stamina_reset = false;
@@ -33,6 +33,9 @@ public class character : MonoBehaviour
 
     void Move()
     {
+
+
+
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
@@ -53,16 +56,16 @@ public class character : MonoBehaviour
             playerMovement = new Vector3(x, 0f, y) * speed * Time.deltaTime;
             if (stamina >= max_stamina && !stamina_reset)
             {
-                stamina = 35;
                 stamina_reset = true;
             }
             if (stamina > 0 && stamina_reset)
-                stamina -= stamina_factor * Time.deltaTime;
+                stamina -= (stamina_factor * 0.5f) * Time.deltaTime;
             if (stamina <= 0)
                 stamina_reset = false;
 
         }
         transform.Translate(playerMovement, Space.Self);
+
     }
 
     //stamina bar
@@ -78,7 +81,7 @@ public class character : MonoBehaviour
         }
         else
         {
-            stamina_rect.width = Screen.width / 3;
+            stamina_rect.width = rect_width;
             GUI.DrawTexture(stamina_rect, tired_texture);
         }
 
