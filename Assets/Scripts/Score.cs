@@ -21,6 +21,6 @@ public class Score : MonoBehaviour
     }
 
     public void IncrementScore(){
-        scoreCount++;
+        scoreCount += 100;
     }
 }
