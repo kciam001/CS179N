@@ -7506,6 +7506,7 @@ MonoBehaviour:
   speed: 6
   stamina_text: {fileID: 1526032556}
   stamina_bar: {fileID: 1043370283}
+  stamina_BG: {fileID: 810668347}
 --- !u!114 &1835884089687720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7536,6 +7537,7 @@ MonoBehaviour:
   cur_health: 0
   health_text: {fileID: 594511921}
   health_bar: {fileID: 67097119}
+  health_BG: {fileID: 1285466248}
 --- !u!114 &1835884089687722
 MonoBehaviour:
   m_ObjectHideFlags: 0

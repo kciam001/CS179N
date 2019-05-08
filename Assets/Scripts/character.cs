@@ -19,12 +19,15 @@ public class character : MonoBehaviour
 
     public Text stamina_text;
     public Image stamina_bar;
+    public Image stamina_BG;
     private Color red = Color.red;
     private Color green = Color.green;
+    private Color none = Color.black;
     void Start()
     {
         red.a = 0.3f;
         green.a = 0.3f;
+        none.a = 0.0f;
     }
     // Update is called once per frame
     void Update()
@@ -43,6 +46,7 @@ public class character : MonoBehaviour
         }
         if(this.gameObject.GetComponent<PlayerHealth>().GetHealth() <= 0){
             stamina_bar.fillAmount = 0;
+            stamina_BG.color = none;
             stamina_text.text = "";
         }
         Move();
