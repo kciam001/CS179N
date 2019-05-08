@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class character : MonoBehaviour
 {
@@ -15,27 +16,37 @@ public class character : MonoBehaviour
     Texture2D stamina_texture;
     Texture2D tired_texture;
     Vector3 playerMovement;
+
+    public Text stamina_text;
+    public Image stamina_bar;
     void Start()
     {
-        stamina_rect = new Rect(Screen.width / 50, Screen.height * 9 / 12, Screen.width / 3, Screen.height / 50);
-        stamina_texture = new Texture2D(1, 1);
-        stamina_texture.SetPixel(0, 0, Color.green);
-        tired_texture = new Texture2D(1, 1);
-        tired_texture.SetPixel(0, 0, Color.red);
-        stamina_texture.Apply();
-        tired_texture.Apply();
+        // stamina_rect = new Rect(Screen.width / 50, Screen.height * 9 / 12, Screen.width / 3, Screen.height / 50);
+        // stamina_texture = new Texture2D(1, 1);
+        // stamina_texture.SetPixel(0, 0, Color.green);
+        // tired_texture = new Texture2D(1, 1);
+        // tired_texture.SetPixel(0, 0, Color.red);
+        // stamina_texture.Apply();
+        // tired_texture.Apply();
     }
     // Update is called once per frame
     void Update()
     {
+        if(stamina <= 0){
+            stamina_text.text = "Stamina: 100";
+            stamina_bar.fillAmount = 1;
+        }else if(stamina >= max_stamina){
+            stamina_text.text = "Stamina: 0";
+            stamina_bar.fillAmount = 0;
+        }else{
+            stamina_text.text = "Stamina: " + (((max_stamina - stamina) / max_stamina) * 100).ToString();
+            stamina_bar.fillAmount = ((max_stamina - stamina) / max_stamina);
+        }
         Move();
     }
 
     void Move()
     {
-
-
-
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
@@ -69,21 +80,21 @@ public class character : MonoBehaviour
     }
 
     //stamina bar
-    void OnGUI()
-    {
-        float ratio = (max_stamina - stamina) / max_stamina;
-        float rect_width = ratio * Screen.width / 3;
+    // void OnGUI()
+    // {
+    //     float ratio = (max_stamina - stamina) / max_stamina;
+    //     float rect_width = ratio * Screen.width / 3;
 
-        if (!stamina_reset)
-        {
-            stamina_rect.width = rect_width;
-            GUI.DrawTexture(stamina_rect, stamina_texture);
-        }
-        else
-        {
-            stamina_rect.width = rect_width;
-            GUI.DrawTexture(stamina_rect, tired_texture);
-        }
+    //     if (!stamina_reset)
+    //     {
+    //         stamina_rect.width = rect_width;
+    //         GUI.DrawTexture(stamina_rect, stamina_texture);
+    //     }
+    //     else
+    //     {
+    //         stamina_rect.width = rect_width;
+    //         GUI.DrawTexture(stamina_rect, tired_texture);
+    //     }
 
-    }
+    // }
 }

@@ -5,19 +5,22 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    private float max_health;
     public float cur_health;
     public Text health_text;
+    public Image health_bar;
     // Start is called before the first frame update
     void Start()
     {
-        cur_health = 100.0f;
+        max_health = 100.0f;
+        cur_health = max_health;
         SetCountText ();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        health_bar.fillAmount = cur_health / max_health;
     }
 
     public void TakeDamage(float damage){

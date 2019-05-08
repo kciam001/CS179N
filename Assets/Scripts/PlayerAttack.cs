@@ -20,7 +20,6 @@ public class PlayerAttack : MonoBehaviour
     {
         timer -= Time.deltaTime;
         bool isAttacking = this.gameObject.GetComponent<character_animator>().myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack");
-        Debug.Log(canAttack);
         if (timer < 0 && isAttacking)
         {
 
@@ -38,7 +37,6 @@ public class PlayerAttack : MonoBehaviour
 
     void OnTriggerStay(Collider coll)
     {
-        Debug.Log("Entered");
         if (coll.tag == "Enemy" && canAttack)
         {
             coll.gameObject.GetComponent<AITest>().TakeDamage();
