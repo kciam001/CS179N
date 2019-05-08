@@ -22,12 +22,20 @@ public class EnemyAttack : MonoBehaviour
     {
         if(other.tag == "Player"){
             if(stayCount > 0.5f){
-                //Debug.Log("damage");
-                other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
 
-                other.gameObject.GetComponent<character_animator>().TakeDamage();
+                bool isAttacking = this.gameObject.GetComponent<AITest>().anim.GetCurrentAnimatorStateInfo(0).IsName("Attack01") || 
+                                       this.gameObject.GetComponent<AITest>().anim.GetCurrentAnimatorStateInfo(0).IsName("Attack02");
+                if (isAttacking)
+                {
+                    //Debug.Log("damage");
+                    other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+
+                    other.gameObject.GetComponent<character_animator>().TakeDamage();
+
+                }
                 stayCount = 0.0f;
-            }else{
+            }
+            else{
                 stayCount += Time.deltaTime;
             }
         }

@@ -61,7 +61,7 @@ public class character_animator : MonoBehaviour
     bool CheckKilled()
     {
         // Debug.Log("Test: " + cur_health);
-        if (cur_health == -1)
+        if (cur_health <= -1)
             return true;
         else
             return false;
