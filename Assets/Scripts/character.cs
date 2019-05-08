@@ -19,15 +19,12 @@ public class character : MonoBehaviour
 
     public Text stamina_text;
     public Image stamina_bar;
+    private Color red = Color.red;
+    private Color green = Color.green;
     void Start()
     {
-        // stamina_rect = new Rect(Screen.width / 50, Screen.height * 9 / 12, Screen.width / 3, Screen.height / 50);
-        // stamina_texture = new Texture2D(1, 1);
-        // stamina_texture.SetPixel(0, 0, Color.green);
-        // tired_texture = new Texture2D(1, 1);
-        // tired_texture.SetPixel(0, 0, Color.red);
-        // stamina_texture.Apply();
-        // tired_texture.Apply();
+        red.a = 0.3f;
+        green.a = 0.3f;
     }
     // Update is called once per frame
     void Update()
@@ -35,12 +32,18 @@ public class character : MonoBehaviour
         if(stamina <= 0){
             stamina_text.text = "Stamina: 100";
             stamina_bar.fillAmount = 1;
+            stamina_bar.color = green;
         }else if(stamina >= max_stamina){
             stamina_text.text = "Stamina: 0";
             stamina_bar.fillAmount = 0;
+            stamina_bar.color = red;
         }else{
             stamina_text.text = "Stamina: " + (((max_stamina - stamina) / max_stamina) * 100).ToString();
             stamina_bar.fillAmount = ((max_stamina - stamina) / max_stamina);
+        }
+        if(this.gameObject.GetComponent<PlayerHealth>().GetHealth() <= 0){
+            stamina_bar.fillAmount = 0;
+            stamina_text.text = "";
         }
         Move();
     }
@@ -78,23 +81,4 @@ public class character : MonoBehaviour
         transform.Translate(playerMovement, Space.Self);
 
     }
-
-    //stamina bar
-    // void OnGUI()
-    // {
-    //     float ratio = (max_stamina - stamina) / max_stamina;
-    //     float rect_width = ratio * Screen.width / 3;
-
-    //     if (!stamina_reset)
-    //     {
-    //         stamina_rect.width = rect_width;
-    //         GUI.DrawTexture(stamina_rect, stamina_texture);
-    //     }
-    //     else
-    //     {
-    //         stamina_rect.width = rect_width;
-    //         GUI.DrawTexture(stamina_rect, tired_texture);
-    //     }
-
-    // }
 }
