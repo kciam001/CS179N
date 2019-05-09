@@ -68,7 +68,7 @@ public class ThirdPersonCameraController : MonoBehaviour
     [Header("Drag the Object you want to follow here")]
     [Space(5)]
     [Tooltip("The best way to use this is to create an empty gameobject and parent it to your players hip/pelvis bone.")]
-    public GameObject CameraFollowObj = GameObject.Find("target");
+    public GameObject CameraFollowObj;
 
     [Header("Adjust these values to how you want the camera to rotate")]
     [Space(5)]
@@ -100,6 +100,7 @@ public class ThirdPersonCameraController : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        CameraFollowObj = GameObject.Find("target");
         Vector3 rot = transform.localRotation.eulerAngles;
         rotY = rot.y;
         rotX = rot.x;
