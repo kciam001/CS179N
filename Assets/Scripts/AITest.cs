@@ -8,6 +8,7 @@ public class AITest : MonoBehaviour
     public float speed;
     public Animator anim;
     bool isHurt = false;
+    string enemyName;
    
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,9 @@ public class AITest : MonoBehaviour
         anim.SetBool("isIdle", true);
         anim.SetBool("isRunning", false);
         anim.SetBool("isAttacking", false);
+        enemyName = this.name;
+        SetSpeed();
+
     }
 
     // Update is called once per frame
@@ -53,5 +57,16 @@ public class AITest : MonoBehaviour
         isHurt = true;
         anim.SetBool("IsHurt", isHurt);
 
+    }
+    void SetSpeed()
+    {
+        if (enemyName.Contains("Grunt"))
+        {
+            speed = 3.0f;
+        }
+        else if (enemyName.Contains("TrollGiant"))
+        {
+            speed = 2.0f;
+        }
     }
 }

@@ -11,11 +11,13 @@ public class EnemyHealth : MonoBehaviour
     public GameObject enemy;
     public GameObject player;
     public Image healthBar;
+    string enemyName;
     // Start is called before the first frame update
     void Start()
     {
-        max_health = 15.0f;
-        cur_health = 15.0f;
+        enemyName = enemy.name;
+        SetHealth();
+
     }
 
     // Update is called once per frame
@@ -43,6 +45,19 @@ public class EnemyHealth : MonoBehaviour
                     player.gameObject.GetComponent<Score>().IncrementScore();
                 }
             }
+        }
+    }
+    void SetHealth()
+    {
+        if (enemyName.Contains("Grunt"))
+        {
+            max_health = 15.0f;
+            cur_health = 15.0f;
+        }
+        else if (enemyName.Contains("TrollGiant"))
+        {
+            max_health = 30.0f;
+            cur_health = 30.0f;
         }
     }
 }

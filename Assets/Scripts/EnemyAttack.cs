@@ -6,16 +6,20 @@ public class EnemyAttack : MonoBehaviour
 {
     private float damage;
     private float stayCount = 0.0f;
+    string enemyName;
     // Start is called before the first frame update
     void Start()
     {
-        damage = 3.0f;
+        enemyName = this.name;
+        SetDamage();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+       
     }
 
     void OnTriggerStay(Collider other)
@@ -40,5 +44,16 @@ public class EnemyAttack : MonoBehaviour
             }
         }
         
+    }
+    void SetDamage()
+    {
+        if (enemyName.Contains("Grunt"))
+        {
+            damage = 3.0f;
+        }
+        else if (enemyName.Contains("TrollGiant"))
+        {
+            damage = 5.0f;
+        }
     }
 }
