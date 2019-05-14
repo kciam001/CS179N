@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,8 @@ public class PlayerHealth : MonoBehaviour
     private Color green = Color.green;
     private Color yellow = Color.yellow;
     private Color red = Color.red;
+    GameObject scoreBoard;
+ 
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +24,9 @@ public class PlayerHealth : MonoBehaviour
         red.a = 0.3f;
         yellow.a = 0.3f;
         green.a = 0.3f;
+        scoreBoard = GameObject.Find("ScoreBoard");
+        scoreBoard.gameObject.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -61,6 +67,7 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             health_text.text = "GameOver";
+            scoreBoard.gameObject.SetActive(true);
         }
     }
 }
