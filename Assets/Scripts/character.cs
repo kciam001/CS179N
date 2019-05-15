@@ -29,28 +29,37 @@ public class character : MonoBehaviour
     Quaternion targetRotation;
     Transform cam;
 
+    character_animator char_anim;
+
     void Start()
     {
         cam = Camera.main.transform;
+        char_anim = GetComponent<character_animator>();
         red.a = 0.3f;
         green.a = 0.3f;
     }
     // Update is called once per frame
     void Update()
     {
-        if(stamina <= 0){
+        if (stamina <= 0)
+        {
             stamina_text.text = "Stamina: 100";
             stamina_bar.fillAmount = 1;
             stamina_bar.color = green;
-        }else if(stamina >= max_stamina){
+        }
+        else if (stamina >= max_stamina)
+        {
             stamina_text.text = "Stamina: 0";
             stamina_bar.fillAmount = 0;
             stamina_bar.color = red;
-        }else{
+        }
+        else
+        {
             stamina_text.text = "Stamina: " + (((max_stamina - stamina) / max_stamina) * 100).ToString();
             stamina_bar.fillAmount = ((max_stamina - stamina) / max_stamina);
         }
-        if(this.gameObject.GetComponent<PlayerHealth>().GetHealth() <= 0){
+        if (this.gameObject.GetComponent<PlayerHealth>().GetHealth() <= 0)
+        {
             stamina_bar.fillAmount = 0;
             stamina_text.text = "";
         }
@@ -96,12 +105,36 @@ public class character : MonoBehaviour
 
 
         //sprint
-        if (Input.GetKey(KeyCode.LeftShift) && stamina < max_stamina && !stamina_reset)
+        if (Input.GetKey(KeyCode.LeftShift) && stamina < max_stamina && !stamina_reset && char_anim.isGrounded)
         {
 
             //playerMovement = new Vector3(x, 0f, y) * speed * sprint_factor * Time.deltaTime;
             transform.position += transform.forward * velocity * sprint_factor * Time.deltaTime;
             stamina += stamina_factor * Time.deltaTime;
+        }
+        else if (Input.GetKey(KeyCode.W) && !char_anim.isGrounded)
+        {
+
+            //playerMovement = new Vector3(x, 0f, y) * speed * sprint_factor * Time.deltaTime;
+            transform.position += transform.forward * velocity * Time.deltaTime;
+        }
+        else if (Input.GetKey(KeyCode.A) && !char_anim.isGrounded)
+        {
+
+            //playerMovement = new Vector3(x, 0f, y) * speed * sprint_factor * Time.deltaTime;
+            transform.position += transform.forward * velocity * Time.deltaTime;
+        }
+        else if (Input.GetKey(KeyCode.D) && !char_anim.isGrounded)
+        {
+
+            //playerMovement = new Vector3(x, 0f, y) * speed * sprint_factor * Time.deltaTime;
+            transform.position += transform.forward * velocity * Time.deltaTime;
+        }
+        else if (Input.GetKey(KeyCode.S) && !char_anim.isGrounded)
+        {
+
+            //playerMovement = new Vector3(x, 0f, y) * speed * sprint_factor * Time.deltaTime;
+            transform.position += transform.forward * velocity * Time.deltaTime;
         }
         else if (stamina < max_stamina && stamina > 0 && !stamina_reset)
         {
@@ -123,7 +156,7 @@ public class character : MonoBehaviour
                 stamina_reset = false;
 
         }
-        
+
         //transform.Translate(playerMovement, Space.Self);
     }
 }

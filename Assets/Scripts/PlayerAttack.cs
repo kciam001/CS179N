@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     private float attackDamage = 5.0f;
-    private float attackCooldown = 0.5f;
+    private float attackCooldown = 0.3f;
     private float timer;
     private bool canAttack = false;
     public Collider coll;
@@ -24,7 +24,7 @@ public class PlayerAttack : MonoBehaviour
         {
 
             canAttack = true;
-            this.gameObject.GetComponent<character_animator>().CheckAttack();
+            //this.gameObject.GetComponent<character_animator>().CheckAttack();
             timer = attackCooldown;
         }
             
