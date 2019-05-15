@@ -80,7 +80,7 @@ public class character_animator : MonoBehaviour
     bool CheckWalking()
     {
         if ((Input.GetKey("up") || Input.GetKey("down") || Input.GetKey("left") || Input.GetKey("right")
-           || Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d")) && (isGrounded))
+           || Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d")))
             return true;
         else
             return false;
@@ -91,7 +91,6 @@ public class character_animator : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-
             return true;
         }
         else
@@ -107,7 +106,7 @@ public class character_animator : MonoBehaviour
     }
     bool CheckSprint()
     {
-        if ((Input.GetKey(KeyCode.LeftShift) && !character.stamina_reset) && (isGrounded))
+        if ((Input.GetKey(KeyCode.LeftShift) && !character.stamina_reset))
             return true;
         else
             return false;

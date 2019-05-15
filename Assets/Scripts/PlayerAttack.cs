@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     private float attackDamage = 5.0f;
-    private float attackCooldown = 0.3f;
+    private float attackCooldown = 0.6f;
     private float timer;
     private bool canAttack = false;
     public Collider coll;
@@ -16,7 +16,7 @@ public class PlayerAttack : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() 
     {
         timer -= Time.deltaTime;
         bool isAttacking = this.gameObject.GetComponent<character_animator>().myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack");
