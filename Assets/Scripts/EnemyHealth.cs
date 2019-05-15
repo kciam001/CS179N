@@ -59,5 +59,15 @@ public class EnemyHealth : MonoBehaviour
             max_health = 30.0f;
             cur_health = 30.0f;
         }
+        else if (enemyName.Contains("Lich"))
+        {
+            max_health = 7.0f;
+            cur_health = 7.0f;
+        }
+        else if (enemyName.Contains("Skeleton"))
+        {
+            max_health = 10.0f;
+            cur_health = 10.0f;
+        }
     }
 }

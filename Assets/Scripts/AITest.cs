@@ -31,7 +31,22 @@ public class AITest : MonoBehaviour
             transform.LookAt(player.transform.position);
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * 0.01f);
             anim.SetBool("isIdle", false);
-            if (dist > 5)
+            if(enemyName.Contains("Lich"))
+            {
+                if(dist > 20)
+                {
+                    anim.SetBool("isRunning", true);
+                    anim.SetBool("isAttacking", false);
+
+                }
+                else
+                {
+                    anim.SetBool("isAttacking", true);
+                    anim.SetBool("isRunning", false);
+
+                }
+            }
+            else if (dist > 5)
             {
                 anim.SetBool("isRunning", true);
                 anim.SetBool("isAttacking", false);
@@ -67,6 +82,14 @@ public class AITest : MonoBehaviour
         else if (enemyName.Contains("TrollGiant"))
         {
             speed = 2.0f;
+        }
+        else if(enemyName.Contains("Lich"))
+        {
+            speed = 3.0f;
+        }
+        else if (enemyName.Contains("Skeleton"))
+        {
+            speed = 5.0f;
         }
     }
 }

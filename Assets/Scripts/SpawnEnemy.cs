@@ -14,7 +14,7 @@ public class SpawnEnemy : MonoBehaviour
 
     private int roundNum = 1;
     public Text round;
-    private float countdown = 10.0f;
+    private float countdown = 3.0f;
 
     // Used for orientation and position of enemy
     private Quaternion spawnRot;

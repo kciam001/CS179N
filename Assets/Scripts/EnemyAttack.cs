@@ -7,6 +7,9 @@ public class EnemyAttack : MonoBehaviour
     private float damage;
     private float stayCount = 0.0f;
     string enemyName;
+    public GameObject projectile;
+    float projectileSpeed = 12.0f;
+    GameObject fireball;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +57,28 @@ public class EnemyAttack : MonoBehaviour
         else if (enemyName.Contains("TrollGiant"))
         {
             damage = 5.0f;
+        }
+        else if (enemyName.Contains("Lich"))
+        {
+            damage = 1.0f;
+        }
+        else if (enemyName.Contains("Skeleton"))
+        {
+            damage = 1.5f;
+        }
+
+    }
+    public void LichAttack()
+    {
+
+
+        Vector3 position = new Vector3(this.GetComponent<Transform>().position.x, this.GetComponent<Transform>().position.y + 1, this.GetComponent<Transform>().position.z);
+        fireball = Instantiate(projectile, position, Quaternion.identity) as GameObject;
+        if (fireball != null)
+        {
+            Rigidbody rb = fireball.GetComponent<Rigidbody>();
+            rb.velocity = transform.forward * projectileSpeed;
+            Destroy(fireball, 3.0f);
         }
     }
 }
