@@ -6,8 +6,13 @@ using UnityEngine.UI;
 public class SpawnEnemy : MonoBehaviour
 {
     // Used to distinguish enemy and player
-    public GameObject enemy;
+    public GameObject Grunt;
+    public GameObject Skeleton;
+    public GameObject Lich;
+    public GameObject TrollGiant;
     public GameObject player;
+    GameObject enemy;
+    string[] enemySelector = {"Skeleton", "Grunt", "Lich", "TrollGiant"};
 
     public enum SpawnState {SPAWNING, WAITING, NEWROUND};
     public SpawnState state = SpawnState.NEWROUND;
@@ -74,13 +79,39 @@ public class SpawnEnemy : MonoBehaviour
         numSpawn *= 2;
         currSpawn = numSpawn;
         roundNum++;
-        countdown = 10.0f;
+        countdown = 3.0f;
     }
 
     void SpawnOne()
     {
+        int max = 1;
+        if(max < 3 && max < roundNum)
+        {
+            max = roundNum;
+        }
+
         int spawnPointIndex = Random.Range (0, spawnPoints.Length);
-        Instantiate (enemy, spawnPoints[spawnPointIndex].position, spawnRot);
+        int enemySelectorIndex = Random.Range(0, max);
+
+        if(enemySelector[enemySelectorIndex] == "Skeleton")
+        {
+            enemy = Instantiate(Skeleton, spawnPoints[spawnPointIndex].position, spawnRot) as GameObject;
+        }
+        else if (enemySelector[enemySelectorIndex] == "Grunt")
+        {
+            enemy = Instantiate(Grunt, spawnPoints[spawnPointIndex].position, spawnRot) as GameObject;
+        }
+        else if (enemySelector[enemySelectorIndex] == "Lich")
+        {
+            enemy = Instantiate(Lich, spawnPoints[spawnPointIndex].position, spawnRot) as GameObject;
+        }
+        else if (enemySelector[enemySelectorIndex] == "TrollGiant")
+        {
+            enemy = Instantiate(TrollGiant, spawnPoints[spawnPointIndex].position, spawnRot) as GameObject;
+        }
+
+
+
     }
 
     public void UpdateCount(){

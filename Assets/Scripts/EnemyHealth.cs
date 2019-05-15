@@ -42,7 +42,25 @@ public class EnemyHealth : MonoBehaviour
                     enemy.gameObject.GetComponent<AITest>().TriggerDeath();
                     Destroy(enemy, 1f);
                     spawner.gameObject.GetComponent<SpawnEnemy>().UpdateCount();
-                    player.gameObject.GetComponent<Score>().IncrementScore();
+                    int points = 0;
+
+                    if (enemyName.Contains("Grunt"))
+                    {
+                        points = 2;
+                    }
+                    else if (enemyName.Contains("TrollGiant"))
+                    {
+                        points = 4;
+                    }
+                    else if (enemyName.Contains("Lich"))
+                    {
+                        points = 3;
+                    }
+                    else if (enemyName.Contains("Skeleton"))
+                    {
+                        points = 1;
+                    }
+                    player.gameObject.GetComponent<Score>().IncrementScore(points);
                 }
             }
         }

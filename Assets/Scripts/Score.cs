@@ -20,7 +20,8 @@ public class Score : MonoBehaviour
         score.text = "Score: " + scoreCount.ToString();
     }
 
-    public void IncrementScore(){
-        scoreCount++;
+    public void IncrementScore (int num){
+
+        scoreCount += num;
     }
 }
