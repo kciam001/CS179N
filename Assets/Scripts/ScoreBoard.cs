@@ -22,8 +22,7 @@ public class ScoreBoard : MonoBehaviour
         updatedOnce = false; 
     }
 
-    void Update()
-    {
+    void Update() {
         
         playerHealth = GameObject.Find("RPGHeroPolyart");
         healthScript = playerHealth.GetComponent<PlayerHealth>();
@@ -42,23 +41,16 @@ public class ScoreBoard : MonoBehaviour
             string jsonString = PlayerPrefs.GetString("entryTable");
             Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
 
-            if (highscores == null || healthScript.resetBoard == true)
+            if (highscores == null || healthScript.resetBoard)
             {
                 //Initialize Table
-                PlayerPrefs.DeleteAll();
-                addEntry(0, "---");
-                addEntry(0, "---");
-                addEntry(0, "---");
-                addEntry(0, "---");
-                addEntry(0, "---");
-                addEntry(0, "---");
-                addEntry(0, "---");
-                addEntry(0, "---");
-                addEntry(0, "---");
+                initTable();
             }
+
             addEntry(scoreScript.scoreCount, "Team 7");
             jsonString = PlayerPrefs.GetString("entryTable");
             highscores = JsonUtility.FromJson<Highscores>(jsonString);
+
             //Sort score list
             for (int i = 0; i < highscores.entryList.Count; ++i)
             {
@@ -75,17 +67,18 @@ public class ScoreBoard : MonoBehaviour
 
             entryTransform = new List<Transform>();
 
-            foreach (entryObject entry in highscores.entryList)
+            for (int i = 0; i < 10; ++i)
             {
-                updateBoard(entry, eList, entryTransform);
+                updateBoard(highscores.entryList[i], eList, entryTransform);
             }
+
         }
         updatedOnce = true;
     }
 
     private void updateBoard(entryObject entry, Transform eList, List<Transform> entryTransform)
     {        
-        float h = 30f;
+        float h = 31f;
         
         Transform eTransform = Instantiate(eObj, eList);
         RectTransform eRectTransform = eTransform.GetComponent<RectTransform>();
@@ -120,9 +113,20 @@ public class ScoreBoard : MonoBehaviour
 
         eTransform.Find("name").GetComponent<Text>().text = name;
 
-        //updatedOnce = true;
-
         entryTransform.Add(eTransform);
+    }
+
+    private void initTable() {
+        PlayerPrefs.DeleteAll();
+        addEntry(0, "---");
+        addEntry(0, "---");
+        addEntry(0, "---");
+        addEntry(0, "---");
+        addEntry(0, "---");
+        addEntry(0, "---");
+        addEntry(0, "---");
+        addEntry(0, "---");
+        addEntry(0, "---");
     }
 
     private void addEntry(int score, string name)
