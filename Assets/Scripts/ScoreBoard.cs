@@ -44,6 +44,7 @@ public class ScoreBoard : MonoBehaviour
             if (highscores == null || healthScript.resetBoard)
             {
                 //Initialize Table
+                highscores.entryList.Clear();
                 initTable();
             }
 
@@ -67,9 +68,14 @@ public class ScoreBoard : MonoBehaviour
 
             entryTransform = new List<Transform>();
 
-            for (int i = 0; i < 10; ++i)
+            if (highscores.entryList.Count > 10)
             {
-                updateBoard(highscores.entryList[i], eList, entryTransform);
+                highscores.entryList.RemoveAt(10);
+            }
+
+            foreach (entryObject entry in highscores.entryList)
+            {
+                updateBoard(entry, eList, entryTransform);
             }
 
         }
