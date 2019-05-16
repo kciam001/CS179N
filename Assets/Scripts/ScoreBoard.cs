@@ -41,9 +41,12 @@ public class ScoreBoard : MonoBehaviour
             string jsonString = PlayerPrefs.GetString("entryTable");
             Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
 
-            if (highscores == null || healthScript.resetBoard)
+            if (highscores == null)
             {
-                //Initialize Table
+                initTable();
+            }
+            if(healthScript.resetBoard)
+            {
                 highscores.entryList.Clear();
                 initTable();
             }
