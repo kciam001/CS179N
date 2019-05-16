@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     private Color yellow = Color.yellow;
     private Color red = Color.red;
     GameObject scoreBoard;
+    public bool resetBoard = false;
  
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,11 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown("r"))
+        {
+            resetBoard = true;
+        }
+
         if(cur_health <= (0.25 * max_health)){
             health_bar.color = red;
         }else if(cur_health <= (0.5 * max_health)){
