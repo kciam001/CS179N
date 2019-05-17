@@ -28,9 +28,13 @@ public class AITest : MonoBehaviour
         float dist = Vector3.Distance(player.transform.position, this.transform.position);
         if (dist < 100) //awake range
         {
-            transform.LookAt(player.transform.position);
 
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * 0.01f);
+            if (this.GetComponent<EnemyHealth>().cur_health >= 0)
+            {
+                transform.LookAt(player.transform.position);
+
+                transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * 0.01f);
+            }
             anim.SetBool("isIdle", false);
             if(enemyName.Contains("Lich"))
             {
@@ -79,15 +83,15 @@ public class AITest : MonoBehaviour
     {
         if (enemyName.Contains("Grunt"))
         {
-            speed = 12.0f;
+            speed = 16.0f;
         }
         else if (enemyName.Contains("TrollGiant"))
         {
-            speed = 8.0f;
+            speed = 12.0f;
         }
         else if(enemyName.Contains("Lich"))
         {
-            speed = 12.0f;
+            speed = 10.0f;
         }
         else if (enemyName.Contains("Skeleton"))
         {

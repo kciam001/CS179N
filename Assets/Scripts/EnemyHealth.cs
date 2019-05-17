@@ -40,7 +40,7 @@ public class EnemyHealth : MonoBehaviour
                 {
                     cur_health = -1;
                     enemy.gameObject.GetComponent<AITest>().TriggerDeath();
-                    Destroy(enemy, 1f);
+                    Destroy(enemy, 2f);
                     spawner.gameObject.GetComponent<SpawnEnemy>().UpdateCount();
                     int points = 0;
 
