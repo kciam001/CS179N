@@ -1203,7 +1203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 421428, guid: f149d460950e2ce478841483a0926f2a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 237.92285
+      value: 237.34
       objectReference: {fileID: 0}
     - target: {fileID: 421428, guid: f149d460950e2ce478841483a0926f2a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4531,11 +4531,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0992ca43c28e34977a36e67d8406f80c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 237.80286
+      value: 238.46
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0992ca43c28e34977a36e67d8406f80c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -310.31253
+      value: -311.2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0992ca43c28e34977a36e67d8406f80c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -4571,15 +4571,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0992ca43c28e34977a36e67d8406f80c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3.7158
+      value: 2.3947587
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0992ca43c28e34977a36e67d8406f80c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.7158
+      value: 2.3947587
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0992ca43c28e34977a36e67d8406f80c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3.7158
+      value: 2.3947587
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0992ca43c28e34977a36e67d8406f80c, type: 3}
@@ -8827,8 +8827,6 @@ MonoBehaviour:
   jumpForce: 7
   isGrounded: 0
   isJumping: 0
-  footsteps: {fileID: 0}
-  swordswing: {fileID: 0}
 --- !u!114 &1835884089687721
 MonoBehaviour:
   m_ObjectHideFlags: 0

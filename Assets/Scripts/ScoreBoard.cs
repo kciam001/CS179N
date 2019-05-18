@@ -51,7 +51,7 @@ public class ScoreBoard : MonoBehaviour
                 initTable();
             }
 
-            addEntry(scoreScript.scoreCount, "Team 7");
+            addEntry(scoreScript.scoreCount, SaveName.username);
             jsonString = PlayerPrefs.GetString("entryTable");
             highscores = JsonUtility.FromJson<Highscores>(jsonString);
 

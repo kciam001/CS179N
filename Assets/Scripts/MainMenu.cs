@@ -8,7 +8,6 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        FindObjectOfType<AudioManager>().Play("music1");
     }
 
     public void PlayGame()
