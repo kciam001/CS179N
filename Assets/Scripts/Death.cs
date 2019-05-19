@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [ExecuteInEditMode]
 public class Death : MonoBehaviour
@@ -48,10 +49,14 @@ public class Death : MonoBehaviour
    // Update is called once per frame
    void Update () {
         cur_hearth = health.cur_health;
-        if (cur_hearth == -1)
+        if (cur_hearth <= 0)
         {
             grayScaleAmount = 1.0f;
 
+            if (Input.GetMouseButtonDown(1))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
         }
         else
         {

@@ -36,7 +36,7 @@ public class AITest : MonoBehaviour
             anim.SetBool("isRunning", false);
             anim.SetBool("isAttacking", false);
         }
-        else
+        else if(this.GetComponent<EnemyHealth>().cur_health > 0)
         {
             if (dist < 100) //awake range
             {
