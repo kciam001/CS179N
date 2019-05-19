@@ -8,6 +8,7 @@ public class AITest : MonoBehaviour
     public float speed;
     public Animator anim;
     bool isHurt = false;
+    bool playerDead = false;
     string enemyName;
    
     // Start is called before the first frame update
@@ -25,48 +26,59 @@ public class AITest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        playerDead = player.GetComponent<PlayerHealth>().cur_health <= 0;
+        Debug.Log(playerDead);
         float dist = Vector3.Distance(player.transform.position, this.transform.position);
-        if (dist < 100) //awake range
-        {
 
-            if (this.GetComponent<EnemyHealth>().cur_health >= 0)
+        if (playerDead)
+        {
+            anim.SetBool("isIdle", true);
+            anim.SetBool("isRunning", false);
+            anim.SetBool("isAttacking", false);
+        }
+        else
+        {
+            if (dist < 100) //awake range
             {
                 transform.LookAt(player.transform.position);
 
                 transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * 0.01f);
-            }
-            anim.SetBool("isIdle", false);
-            if(enemyName.Contains("Lich"))
-            {
-                if(dist > 20)
+
+                anim.SetBool("isIdle", false);
+                if (enemyName.Contains("Lich"))
+                {
+                    if (dist > 20)
+                    {
+                        anim.SetBool("isRunning", true);
+                        anim.SetBool("isAttacking", false);
+
+                    }
+                    else
+                    {
+
+                        anim.SetBool("isAttacking", true);
+                        anim.SetBool("isRunning", false);
+                    }
+
+                }
+                else if (dist > 5)
                 {
                     anim.SetBool("isRunning", true);
                     anim.SetBool("isAttacking", false);
-
                 }
                 else
                 {
                     anim.SetBool("isAttacking", true);
                     anim.SetBool("isRunning", false);
-
-
                 }
+
             }
-            else if (dist > 5)
+            else //idle range
             {
-                anim.SetBool("isRunning", true);
-                anim.SetBool("isAttacking", false);
-            }
-            else { 
-                anim.SetBool("isAttacking", true);
+                anim.SetBool("isIdle", true);
                 anim.SetBool("isRunning", false);
+                //anim.SetBool("isAttacking", false);
             }
-        }
-        else //idle range
-        {
-            anim.SetBool("isIdle", true);
-            anim.SetBool("isRunning", false);
-            //anim.SetBool("isAttacking", false);
         }
     }
     public void TriggerDeath()

@@ -70,9 +70,12 @@ public class character : MonoBehaviour
             Move();
             return;
         }
-        CalculateDirection();
-        Rotate();
-        Move();
+        if (GetComponent<PlayerHealth>().GetHealth() > 0)
+        {
+            CalculateDirection();
+            Rotate();
+            Move();
+        }
     }
 
     void GetInput()

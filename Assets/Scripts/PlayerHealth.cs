@@ -73,7 +73,12 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             health_text.text = "GameOver";
-            scoreBoard.gameObject.SetActive(true);
+            Invoke("ShowScoreBoard", 4);
+
         }
+    }
+    void ShowScoreBoard()
+    {
+        scoreBoard.gameObject.SetActive(true);
     }
 }

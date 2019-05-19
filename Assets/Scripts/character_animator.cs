@@ -7,7 +7,7 @@ public class character_animator : MonoBehaviour
     public Animator myAnimator;
     float elapsedTime;
     public PlayerHealth health;
-    public float cur_health;
+    public float cur_health = 1;
     bool isHurt = false;
     Rigidbody rb;
     public CapsuleCollider col;
@@ -16,7 +16,7 @@ public class character_animator : MonoBehaviour
     public bool isGrounded;
     bool isWalkingPressed;
     bool isAttackPressed;
-    bool isKilled;
+    bool isKilled = false;
     bool isSprinting;
     public bool isJumping;
     // Start is called before the first frame update
@@ -31,24 +31,22 @@ public class character_animator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        cur_health = health.cur_health;
         isWalkingPressed = CheckWalking();
         isAttackPressed = CheckAttack();
         isKilled = CheckKilled();
         isSprinting = CheckSprint();
         isJumping = CheckJump();
 
-        cur_health = health.cur_health;
-        //Debug.Log("Test: ");
 
-        //Debug.Log(isAttackPressed);
+       
         myAnimator.SetBool("IsWalking", isWalkingPressed);
         myAnimator.SetBool("IsAttacking", isAttackPressed);
         myAnimator.SetBool("IsKilled", isKilled);
         myAnimator.SetBool("IsSprinting", isSprinting);
+        
         //myAnimator.SetBool("IsJumping", isJumping);
         //Debug.Log("Test: " + isAttackPressed);
-
 
 
     }
@@ -70,7 +68,7 @@ public class character_animator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.AddForce(Vector3.up * 200f, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * 400f, ForceMode.Impulse);
             isWalkingPressed = false;
             return true;
         }
@@ -81,9 +79,13 @@ public class character_animator : MonoBehaviour
     {
         if ((Input.GetKey("up") || Input.GetKey("down") || Input.GetKey("left") || Input.GetKey("right")
            || Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d")))
+        {
             return true;
+        }
         else
+        {
             return false;
+        }
 
 
     }
@@ -99,7 +101,7 @@ public class character_animator : MonoBehaviour
     bool CheckKilled()
     {
         // Debug.Log("Test: " + cur_health);
-        if (cur_health <= -1)
+        if (cur_health <= 0)
             return true;
         else
             return false;
@@ -116,4 +118,5 @@ public class character_animator : MonoBehaviour
         isHurt = true;
         myAnimator.SetBool("IsHurt", isHurt);
     }
+
 }
