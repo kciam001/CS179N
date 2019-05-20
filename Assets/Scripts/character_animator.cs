@@ -33,7 +33,7 @@ public class character_animator : MonoBehaviour
     {
         cur_health = health.cur_health;
         isWalkingPressed = CheckWalking();
-        isAttackPressed = CheckAttack();
+        CheckAttack();
         isKilled = CheckKilled();
         isSprinting = CheckSprint();
         isJumping = CheckJump();
@@ -89,14 +89,12 @@ public class character_animator : MonoBehaviour
 
 
     }
-    public bool CheckAttack()
+    public void CheckAttack()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            return true;
+            setAttack();
         }
-        else
-            return false;
     }
     bool CheckKilled()
     {
@@ -117,6 +115,16 @@ public class character_animator : MonoBehaviour
     {
         isHurt = true;
         myAnimator.SetBool("IsHurt", isHurt);
+    }
+    void setAttack()
+    {
+        isAttackPressed = true;
+        Invoke("setAttackBack", 0.5f);
+
+    }
+    void setAttackBack()
+    {
+        isAttackPressed = false;
     }
 
 }
