@@ -87,7 +87,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: playerhurt
     clip: {fileID: 8300000, guid: f5b3b59a3f2d841f782a4e1a06ff1dfd, type: 3}
-    volume: 0.1
+    volume: 0.5
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0.1
