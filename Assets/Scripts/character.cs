@@ -55,7 +55,7 @@ public class character : MonoBehaviour
         }
         else
         {
-            stamina_text.text = "Stamina: " + (((max_stamina - stamina) / max_stamina) * 100).ToString();
+            stamina_text.text = "Stamina: " + (((max_stamina - stamina) / max_stamina) * 100).ToString("f1");
             stamina_bar.fillAmount = ((max_stamina - stamina) / max_stamina);
         }
         if (this.gameObject.GetComponent<PlayerHealth>().GetHealth() <= 0)

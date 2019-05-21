@@ -27,7 +27,6 @@ public class AITest : MonoBehaviour
     void Update()
     {
         playerDead = player.GetComponent<PlayerHealth>().cur_health <= 0;
-        Debug.Log(playerDead);
         float dist = Vector3.Distance(player.transform.position, this.transform.position);
 
         if (playerDead)
@@ -36,7 +35,7 @@ public class AITest : MonoBehaviour
             anim.SetBool("isRunning", false);
             anim.SetBool("isAttacking", false);
         }
-        else if(this.GetComponent<EnemyHealth>().cur_health > 0)
+        else if(this.GetComponent<EnemyHealth>().cur_health >= 0)
         {
             if (dist < 100) //awake range
             {

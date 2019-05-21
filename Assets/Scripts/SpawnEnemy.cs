@@ -13,6 +13,7 @@ public class SpawnEnemy : MonoBehaviour
     public GameObject player;
     GameObject enemy;
     string[] enemySelector = {"Skeleton", "Grunt", "Lich", "TrollGiant"};
+    const int NUM_ENEMIES = 4;
 
     public enum SpawnState {SPAWNING, WAITING, NEWROUND};
     public SpawnState state = SpawnState.NEWROUND;
@@ -85,10 +86,12 @@ public class SpawnEnemy : MonoBehaviour
     void SpawnOne()
     {
         int max = 1;
-        if(max < 3 && max < roundNum)
+        if(max < roundNum && max < 3)
         {
             max = roundNum;
         }
+        if (max >= NUM_ENEMIES)
+            max = NUM_ENEMIES - 1;
 
         int spawnPointIndex = Random.Range (0, spawnPoints.Length);
         int enemySelectorIndex = Random.Range(0, max);
