@@ -21,6 +21,7 @@ public class character : MonoBehaviour
     public Image stamina_bar;
     private Color red = Color.red;
     private Color green = Color.green;
+    private Color yellow = Color.yellow;
 
     float velocity = 5f;
     float turnSpeed = 10;
@@ -28,6 +29,8 @@ public class character : MonoBehaviour
     float angle;
     Quaternion targetRotation;
     Transform cam;
+    bool staminaPowerUp = false;
+    float timeLeft = 5f;
 
     character_animator char_anim;
 
@@ -41,21 +44,28 @@ public class character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (stamina <= 0)
+        if(staminaPowerUp)
         {
-            stamina_text.text = "Stamina: 100";
+            timeLeft -= Time.deltaTime;
+            stamina_text.text = "Unlimited Stamina " + timeLeft.ToString("f0") +"s";
+            stamina_bar.fillAmount = 1;
+            stamina_bar.color = green;
+        }
+        else if (stamina <= 0)
+        {
+            stamina_text.text = "Stamina";
             stamina_bar.fillAmount = 1;
             stamina_bar.color = green;
         }
         else if (stamina >= max_stamina)
         {
-            stamina_text.text = "Stamina: 0";
+            stamina_text.text = "Stamina";
             stamina_bar.fillAmount = 0;
             stamina_bar.color = red;
         }
         else
         {
-            stamina_text.text = "Stamina: " + (((max_stamina - stamina) / max_stamina) * 100).ToString("f1");
+            stamina_text.text = "Stamina";
             stamina_bar.fillAmount = ((max_stamina - stamina) / max_stamina);
         }
         if (this.gameObject.GetComponent<PlayerHealth>().GetHealth() <= 0)
@@ -108,7 +118,11 @@ public class character : MonoBehaviour
 
 
         //sprint
-        if (Input.GetKey(KeyCode.LeftShift) && stamina < max_stamina && !stamina_reset && char_anim.isGrounded)
+        if (Input.GetKey(KeyCode.LeftShift) && staminaPowerUp)
+        {
+            transform.position += transform.forward * velocity * sprint_factor * Time.deltaTime;
+        }
+        else if (Input.GetKey(KeyCode.LeftShift) && stamina < max_stamina && !stamina_reset && char_anim.isGrounded)
         {
 
             //playerMovement = new Vector3(x, 0f, y) * speed * sprint_factor * Time.deltaTime;
@@ -161,5 +175,17 @@ public class character : MonoBehaviour
         }
 
         //transform.Translate(playerMovement, Space.Self);
+    }
+
+    public void TriggerStaminaPowerUp()
+    {
+        staminaPowerUp = true;
+        Invoke("SetBackPowerUp", timeLeft);
+    }
+    void SetBackPowerUp()
+    {
+        staminaPowerUp = false;
+        timeLeft = 5;
+        stamina = 0;
     }
 }

@@ -38,13 +38,7 @@ public class PlayerHealth : MonoBehaviour
             resetBoard = true;
         }
 
-        if(cur_health <= (0.25 * max_health)){
-            health_bar.color = red;
-        }else if(cur_health <= (0.5 * max_health)){
-            health_bar.color = yellow;
-        }else{
-            health_bar.color = green;
-        }
+        health_bar.color = red;
         health_bar.fillAmount = cur_health / max_health;
     }
 
@@ -68,7 +62,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (cur_health > 0)
         {
-            health_text.text = "Health: " + cur_health.ToString();
+            health_text.text = "Health";
         }
         else
         {
@@ -80,5 +74,12 @@ public class PlayerHealth : MonoBehaviour
     void ShowScoreBoard()
     {
         scoreBoard.gameObject.SetActive(true);
+    }
+    public void TriggerHealthPowerUp()
+    {
+        if (cur_health <= 80 && cur_health > 0)
+            cur_health += 20;
+        else if (cur_health > 80)
+            cur_health = 100;
     }
 }

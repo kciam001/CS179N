@@ -10,6 +10,8 @@ public class EnemyHealth : MonoBehaviour
     public GameObject spawner;
     public GameObject enemy;
     public GameObject player;
+    public GameObject healthPowerUp;
+    public GameObject staminaPowerUp;
     public Image healthBar;
     string enemyName;
     // Start is called before the first frame update
@@ -40,7 +42,9 @@ public class EnemyHealth : MonoBehaviour
                 {
                     cur_health = -1;
                     enemy.gameObject.GetComponent<AITest>().TriggerDeath();
+                    SpawnPowerUp();
                     Destroy(enemy, 2f);
+
                     spawner.gameObject.GetComponent<SpawnEnemy>().UpdateCount();
                     int points = 0;
 
@@ -87,5 +91,22 @@ public class EnemyHealth : MonoBehaviour
             max_health = 10.0f;
             cur_health = 10.0f;
         }
+    }
+    void SpawnPowerUp()
+    {
+        int powerUp = Random.Range(0, 2);
+        Vector3 position = transform.position + new Vector3(0, -2f, 0);
+        if (powerUp == 0)
+        {
+            if(healthPowerUp != null)
+                Instantiate(healthPowerUp, position, transform.rotation);
+        }
+        else if (powerUp == 1)
+        {
+            if(staminaPowerUp != null)
+                Instantiate(staminaPowerUp, position, transform.rotation);
+        }
+
+               
     }
 }

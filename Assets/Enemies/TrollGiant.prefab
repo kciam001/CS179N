@@ -1635,7 +1635,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7626147125187958601}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.0453033, y: -0.47606468, z: 1.7241211}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.999, y: 1.999, z: 1.999}
   m_Children:
   - {fileID: 7626912057846698015}
@@ -1722,6 +1722,8 @@ MonoBehaviour:
   spawner: {fileID: 0}
   enemy: {fileID: 7626147125187958601}
   player: {fileID: 0}
+  healthPowerUp: {fileID: 0}
+  staminaPowerUp: {fileID: 0}
   healthBar: {fileID: 6297782633040246747}
 --- !u!114 &7626293904803236977
 MonoBehaviour:
@@ -1751,6 +1753,8 @@ MonoBehaviour:
   player: {fileID: 0}
   speed: 4
   anim: {fileID: 0}
+  isPaused: 0
+  Pause: {fileID: 0}
 --- !u!1 &7626147125225245087
 GameObject:
   m_ObjectHideFlags: 0

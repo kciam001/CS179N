@@ -91,7 +91,7 @@ public class SpawnEnemy : MonoBehaviour
             max = roundNum;
         }
         if (max >= NUM_ENEMIES)
-            max = NUM_ENEMIES - 1;
+            max = NUM_ENEMIES;
 
         int spawnPointIndex = Random.Range (0, spawnPoints.Length);
         int enemySelectorIndex = Random.Range(0, max);
