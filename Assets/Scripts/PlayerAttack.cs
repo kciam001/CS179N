@@ -8,7 +8,10 @@ public class PlayerAttack : MonoBehaviour
     private float attackCooldown = 0.6f;
     private float timer;
     private bool canAttack = false;
+    float projectileSpeed = 18.0f;
     public Collider coll;
+    public GameObject projectile;
+    GameObject magicAttack;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,5 +47,19 @@ public class PlayerAttack : MonoBehaviour
             canAttack = false;
         }
 
+    }
+    public void MagicAttack()
+    {
+
+        this.GetComponent<character_animator>().TriggerChargeUse();
+        Vector3 position = new Vector3(this.GetComponent<Transform>().position.x, this.GetComponent<Transform>().position.y + 1, this.GetComponent<Transform>().position.z);
+        magicAttack = Instantiate(projectile, position, this.transform.rotation) as GameObject;
+        magicAttack.transform.Rotate(0, 90, 0, Space.Self);
+        if (magicAttack != null)
+        {
+            Rigidbody rb = magicAttack.GetComponent<Rigidbody>();
+            rb.velocity = transform.forward * projectileSpeed;
+            Destroy(magicAttack, 3.0f);
+        }
     }
 }

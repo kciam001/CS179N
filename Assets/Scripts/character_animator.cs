@@ -15,10 +15,13 @@ public class character_animator : MonoBehaviour
     public float jumpForce = 7.0f;
     public bool isGrounded;
     bool isWalkingPressed;
-    bool isAttackPressed;
+    bool isAttackPressed = false;
     bool isKilled = false;
     bool isSprinting;
+    bool isCasting = false;
     public bool isJumping;
+    bool magicAxeEnabled = false;
+    public int magicAxeCharges = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,9 +37,11 @@ public class character_animator : MonoBehaviour
         cur_health = health.cur_health;
         isWalkingPressed = CheckWalking();
         CheckAttack();
+        CheckCast();
         isKilled = CheckKilled();
         isSprinting = CheckSprint();
         isJumping = CheckJump();
+
 
 
        
@@ -44,6 +49,7 @@ public class character_animator : MonoBehaviour
         myAnimator.SetBool("IsAttacking", isAttackPressed);
         myAnimator.SetBool("IsKilled", isKilled);
         myAnimator.SetBool("IsSprinting", isSprinting);
+        myAnimator.SetBool("IsCasting", isCasting);
         
         //myAnimator.SetBool("IsJumping", isJumping);
         //Debug.Log("Test: " + isAttackPressed);
@@ -89,13 +95,6 @@ public class character_animator : MonoBehaviour
 
 
     }
-    public void CheckAttack()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            setAttack();
-        }
-    }
     bool CheckKilled()
     {
         // Debug.Log("Test: " + cur_health);
@@ -111,10 +110,42 @@ public class character_animator : MonoBehaviour
         else
             return false;
     }
-    public void TakeDamage()
+    public void CheckCast()
     {
-        isHurt = true;
-        myAnimator.SetBool("IsHurt", isHurt);
+        if((Input.GetMouseButtonDown(1)) && magicAxeEnabled)
+        {
+            setCast();
+        }
+    }
+    void setCast()
+    {
+        isCasting = true;
+        Invoke("setCastBack", 0.5f);
+    }
+    void setCastBack()
+    {
+        isCasting = false;
+    }
+    public void TriggerMagicAxePowerUp()
+    {
+        magicAxeCharges = 3;
+        magicAxeEnabled = true;
+    }
+    public void TriggerChargeUse()
+    {
+        magicAxeCharges -= 1;
+        if(magicAxeCharges <= 0)
+        {
+            magicAxeCharges = 0;
+            magicAxeEnabled = false;
+        }
+    }
+    public void CheckAttack()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            setAttack();
+        }
     }
     void setAttack()
     {
@@ -125,6 +156,12 @@ public class character_animator : MonoBehaviour
     void setAttackBack()
     {
         isAttackPressed = false;
+    }
+
+    public void TakeDamage()
+    {
+        isHurt = true;
+        myAnimator.SetBool("IsHurt", isHurt);
     }
 
 }

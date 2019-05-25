@@ -25,7 +25,11 @@ public class PowerUp : MonoBehaviour
         {
             player.GetComponent<character>().TriggerStaminaPowerUp();
         }
-        //FindObjectOfType<AudioManager>().Play("powerup");
+        else if (this.name.Contains("MagicAxePowerUp"))
+        {
+            player.GetComponent<character_animator>().TriggerMagicAxePowerUp();
+        }
+      //  FindObjectOfType<AudioManager>().Play("powerup");
         Destroy(gameObject);
     }
 }

@@ -12,6 +12,7 @@ public class EnemyHealth : MonoBehaviour
     public GameObject player;
     public GameObject healthPowerUp;
     public GameObject staminaPowerUp;
+    public GameObject magicAxePowerUp;
     public Image healthBar;
     string enemyName;
     // Start is called before the first frame update
@@ -94,7 +95,7 @@ public class EnemyHealth : MonoBehaviour
     }
     void SpawnPowerUp()
     {
-        int powerUp = Random.Range(0, 2);
+        int powerUp = Random.Range(0, 4);
         Vector3 position = transform.position + new Vector3(0, -2f, 0);
         if (powerUp == 0)
         {
@@ -105,6 +106,12 @@ public class EnemyHealth : MonoBehaviour
         {
             if(staminaPowerUp != null)
                 Instantiate(staminaPowerUp, position, transform.rotation);
+        }
+        else if (powerUp == 2)
+        {
+            if(magicAxePowerUp != null)
+                Instantiate(magicAxePowerUp, position, transform.rotation);
+
         }
 
                

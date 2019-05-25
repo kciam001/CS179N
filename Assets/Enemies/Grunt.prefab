@@ -355,7 +355,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8282725114236131733}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -426,7 +426,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.5
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1.4, z: 0}
 --- !u!114 &8282725115185886871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,8 +473,12 @@ MonoBehaviour:
   spawner: {fileID: 0}
   enemy: {fileID: 8282725114236131733}
   player: {fileID: 0}
-  healthPowerUp: {fileID: 0}
-  staminaPowerUp: {fileID: 0}
+  healthPowerUp: {fileID: 6119276590012135545, guid: bf07c68b147ef44aa98586c30cefae6f,
+    type: 3}
+  staminaPowerUp: {fileID: 9090000200359877348, guid: f1765f8c5457e4c268d0fd049dcb6457,
+    type: 3}
+  magicAxePowerUp: {fileID: 7348179680037253607, guid: 2ad05896ae9f84781a5f9db3e7f7af7e,
+    type: 3}
   healthBar: {fileID: 8282725114210609337}
 --- !u!1 &8282725114236131735
 GameObject:

@@ -497,7 +497,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2467488010782235803}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.2259454, y: 1.3783305, z: 1.2259454}
   m_Children:
@@ -585,7 +585,9 @@ MonoBehaviour:
   enemy: {fileID: 2467488010782235803}
   player: {fileID: 0}
   healthPowerUp: {fileID: 0}
-  staminaPowerUp: {fileID: 0}
+  staminaPowerUp: {fileID: 9090000200359877348, guid: f1765f8c5457e4c268d0fd049dcb6457,
+    type: 3}
+  magicAxePowerUp: {fileID: 0}
   healthBar: {fileID: 1002580587510794551}
 --- !u!114 &2467488011813811910
 MonoBehaviour:

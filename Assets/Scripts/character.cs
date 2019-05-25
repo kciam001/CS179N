@@ -12,16 +12,16 @@ public class character : MonoBehaviour
     // float timer = 0;
     float max_stamina = 10;
     public static bool stamina_reset = false;
-    Rect stamina_rect;
-    Texture2D stamina_texture;
-    Texture2D tired_texture;
     Vector3 playerMovement = Vector3.zero;
 
     public Text stamina_text;
     public Image stamina_bar;
+    public Text special_text;
+    public Image special_bar;
     private Color red = Color.red;
     private Color green = Color.green;
     private Color yellow = Color.yellow;
+    private Color blue = Color.blue;
 
     float velocity = 5f;
     float turnSpeed = 10;
@@ -33,6 +33,7 @@ public class character : MonoBehaviour
     float timeLeft = 5f;
 
     character_animator char_anim;
+
 
     void Start()
     {
@@ -86,6 +87,7 @@ public class character : MonoBehaviour
             Rotate();
             Move();
         }
+        SpecialPowerHUD();
     }
 
     void GetInput()
@@ -188,4 +190,19 @@ public class character : MonoBehaviour
         timeLeft = 5;
         stamina = 0;
     }
+    void SpecialPowerHUD()
+    {
+        int specialPowerCharges = this.GetComponent<character_animator>().magicAxeCharges;
+        if (specialPowerCharges != 0)
+        {
+            special_text.text = "Special Charges: " + specialPowerCharges.ToString();
+            special_text.color = blue;
+        }
+        else
+        {
+            special_text.text = "";
+        }
+
+    }
+
 }
