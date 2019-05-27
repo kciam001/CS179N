@@ -16,8 +16,8 @@ public class character : MonoBehaviour
 
     public Text stamina_text;
     public Image stamina_bar;
-    public Text special_text;
-    public Image special_bar;
+    public Text magicAxe_text;
+    public Text superKick_text;
     private Color red = Color.red;
     private Color green = Color.green;
     private Color yellow = Color.yellow;
@@ -192,15 +192,25 @@ public class character : MonoBehaviour
     }
     void SpecialPowerHUD()
     {
-        int specialPowerCharges = this.GetComponent<character_animator>().magicAxeCharges;
-        if (specialPowerCharges != 0)
+        int magicAxeCharges = this.GetComponent<character_animator>().magicAxeCharges;
+        int superKickCharges = this.GetComponent<PlayerAttack>().superKickCharges;
+        if (magicAxeCharges > 0)
         {
-            special_text.text = "Special Charges: " + specialPowerCharges.ToString();
-            special_text.color = blue;
+            magicAxe_text.text = "Magic Axe Charges: " + magicAxeCharges.ToString();
+            magicAxe_text.color = blue;
         }
         else
         {
-            special_text.text = "";
+            magicAxe_text.text = "";
+        }
+        if (superKickCharges > 0)
+        {
+            superKick_text.text = "Super Kick Charges " + superKickCharges.ToString();
+            superKick_text.color = yellow;
+        }
+        else
+        {
+            superKick_text.text = "";
         }
 
     }

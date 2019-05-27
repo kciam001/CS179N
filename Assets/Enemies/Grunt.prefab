@@ -439,11 +439,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c0fa624fd051448aaf336c563f5aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 6081875999610839231, guid: 111ed51dc30f4476f9e15c510628810f, type: 3}
   speed: 4
   anim: {fileID: 0}
   isPaused: 0
-  Pause: {fileID: 0}
+  Pause: {fileID: 3368740885091666727, guid: def577b92104848bdbb1ee959eb3cdd7, type: 3}
+  enemy: {fileID: 8282725114236131733}
 --- !u!114 &8282725115185886859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,8 +478,7 @@ MonoBehaviour:
     type: 3}
   staminaPowerUp: {fileID: 9090000200359877348, guid: f1765f8c5457e4c268d0fd049dcb6457,
     type: 3}
-  magicAxePowerUp: {fileID: 7348179680037253607, guid: 2ad05896ae9f84781a5f9db3e7f7af7e,
-    type: 3}
+  magicAxePowerUp: {fileID: 100004, guid: f10a79f37ff522b4280e2844332bef77, type: 3}
   healthBar: {fileID: 8282725114210609337}
 --- !u!1 &8282725114236131735
 GameObject:

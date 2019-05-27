@@ -5,6 +5,7 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     public GameObject pickupEffect;
+    string activePowerUp; // Set active powerup so only one can be active at a time?
     // Start is called before the first frame update
     void OnTriggerEnter(Collider other)
     {
@@ -29,7 +30,11 @@ public class PowerUp : MonoBehaviour
         {
             player.GetComponent<character_animator>().TriggerMagicAxePowerUp();
         }
-      //  FindObjectOfType<AudioManager>().Play("powerup");
+        else if (this.name.Contains("SuperKickPowerUp"))
+        {
+            player.GetComponent<PlayerAttack>().SuperKickPowerUp();
+        }
+        //  FindObjectOfType<AudioManager>().Play("powerup");
         Destroy(gameObject);
     }
 }

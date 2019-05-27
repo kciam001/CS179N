@@ -1620,6 +1620,7 @@ GameObject:
   - component: {fileID: 7626293904803236990}
   - component: {fileID: 7626293904803236977}
   - component: {fileID: 7626293904803236976}
+  - component: {fileID: 1000012117431729}
   m_Layer: 0
   m_Name: TrollGiant
   m_TagString: Enemy
@@ -1634,7 +1635,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7626147125187958601}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.999, y: 1.999, z: 1.999}
   m_Children:
@@ -1721,9 +1722,12 @@ MonoBehaviour:
   cur_health: 0
   spawner: {fileID: 0}
   enemy: {fileID: 7626147125187958601}
-  player: {fileID: 0}
-  healthPowerUp: {fileID: 0}
-  staminaPowerUp: {fileID: 0}
+  player: {fileID: 6081875999610839231, guid: 111ed51dc30f4476f9e15c510628810f, type: 3}
+  healthPowerUp: {fileID: 6119276590012135545, guid: bf07c68b147ef44aa98586c30cefae6f,
+    type: 3}
+  staminaPowerUp: {fileID: 9090000200359877348, guid: f1765f8c5457e4c268d0fd049dcb6457,
+    type: 3}
+  magicAxePowerUp: {fileID: 100004, guid: f10a79f37ff522b4280e2844332bef77, type: 3}
   healthBar: {fileID: 6297782633040246747}
 --- !u!114 &7626293904803236977
 MonoBehaviour:
@@ -1750,11 +1754,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c0fa624fd051448aaf336c563f5aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 6081875999610839231, guid: 111ed51dc30f4476f9e15c510628810f, type: 3}
   speed: 4
   anim: {fileID: 0}
   isPaused: 0
-  Pause: {fileID: 0}
+  Pause: {fileID: 3368740885091666727, guid: def577b92104848bdbb1ee959eb3cdd7, type: 3}
+  enemy: {fileID: 7626147125187958601}
+--- !u!65 &1000012117431729
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7626147125187958601}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 0.2, z: 1.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7626147125225245087
 GameObject:
   m_ObjectHideFlags: 0

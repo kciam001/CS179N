@@ -12,6 +12,7 @@ public class AITest : MonoBehaviour
     public bool isPaused;
     string enemyName;
     public PauseMenu Pause;
+    public GameObject enemy;
    
     // Start is called before the first frame update
     void Start()
@@ -28,12 +29,12 @@ public class AITest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isPaused = Pause.isPaused;
+        isPaused = false;
         if (!isPaused)
         {
             playerDead = player.GetComponent<PlayerHealth>().cur_health <= 0;
             float dist = Vector3.Distance(player.transform.position, this.transform.position);
-
+            //Debug.Log(dist);
             if (playerDead)
             {
                 anim.SetBool("isIdle", true);
@@ -79,8 +80,10 @@ public class AITest : MonoBehaviour
                 }
                 else //idle range
                 {
-                    anim.SetBool("isIdle", true);
-                    anim.SetBool("isRunning", false);
+                    if (enemy != null && enemy.name.Contains("Clone"))
+                    {
+                        enemy.GetComponent<EnemyHealth>().TakeDamage(100.0f, true);
+                    }
                     //anim.SetBool("isAttacking", false);
                 }
             }
@@ -112,7 +115,7 @@ public class AITest : MonoBehaviour
         }
         else if (enemyName.Contains("Skeleton"))
         {
-            speed = 20.0f;
+            speed = 18.0f;
         }
     }
 }

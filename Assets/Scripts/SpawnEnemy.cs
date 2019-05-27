@@ -21,6 +21,7 @@ public class SpawnEnemy : MonoBehaviour
     private int roundNum = 1;
     public Text round;
     private float countdown = 3.0f;
+    private float timeBetweenSpawn = 5.0f;
 
     // Used for orientation and position of enemy
     private Quaternion spawnRot;
@@ -40,6 +41,7 @@ public class SpawnEnemy : MonoBehaviour
     }
 
     void Update(){
+     
         if(state == SpawnState.WAITING){
             // Check if enemies are alive
             if(currSpawn == 0){
@@ -69,7 +71,7 @@ public class SpawnEnemy : MonoBehaviour
 
         for(int i = 0; i < numSpawn; i++){
             SpawnOne();
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(timeBetweenSpawn);
         }
 
         state = SpawnState.WAITING;
@@ -81,6 +83,8 @@ public class SpawnEnemy : MonoBehaviour
         currSpawn = numSpawn;
         roundNum++;
         countdown = 3.0f;
+        if(timeBetweenSpawn > 1.4f)
+            timeBetweenSpawn -= 0.4f;
     }
 
     void SpawnOne()

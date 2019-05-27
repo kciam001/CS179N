@@ -19,6 +19,7 @@ public class character_animator : MonoBehaviour
     bool isKilled = false;
     bool isSprinting;
     bool isCasting = false;
+    bool isKicking = false;
     public bool isJumping;
     bool magicAxeEnabled = false;
     public int magicAxeCharges = 0;
@@ -41,6 +42,7 @@ public class character_animator : MonoBehaviour
         isKilled = CheckKilled();
         isSprinting = CheckSprint();
         isJumping = CheckJump();
+        CheckKick();
 
 
 
@@ -50,6 +52,7 @@ public class character_animator : MonoBehaviour
         myAnimator.SetBool("IsKilled", isKilled);
         myAnimator.SetBool("IsSprinting", isSprinting);
         myAnimator.SetBool("IsCasting", isCasting);
+        myAnimator.SetBool("IsKicking", isKicking);
         
         //myAnimator.SetBool("IsJumping", isJumping);
         //Debug.Log("Test: " + isAttackPressed);
@@ -128,7 +131,7 @@ public class character_animator : MonoBehaviour
     }
     public void TriggerMagicAxePowerUp()
     {
-        magicAxeCharges = 3;
+        magicAxeCharges = 5;
         magicAxeEnabled = true;
     }
     public void TriggerChargeUse()
@@ -136,9 +139,13 @@ public class character_animator : MonoBehaviour
         magicAxeCharges -= 1;
         if(magicAxeCharges <= 0)
         {
-            magicAxeCharges = 0;
-            magicAxeEnabled = false;
+            ResetMagicAxe();
         }
+    }
+    public void ResetMagicAxe()
+    {
+        magicAxeCharges = 0;
+        magicAxeEnabled = false;
     }
     public void CheckAttack()
     {
@@ -146,6 +153,22 @@ public class character_animator : MonoBehaviour
         {
             setAttack();
         }
+    }
+    public void CheckKick()
+    {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            setKick();
+        }
+    }
+    void setKick()
+    {
+        isKicking = true;
+        Invoke("setKickBack", 0.5f);
+    }
+    void setKickBack()
+    {
+        isKicking = false;
     }
     void setAttack()
     {

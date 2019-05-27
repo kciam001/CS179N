@@ -38,7 +38,7 @@ public class Projectile : MonoBehaviour
                 {
                     if (hitColliders[i].tag == "Enemy")
                     {
-                        hitColliders[i].gameObject.GetComponent<EnemyHealth>().TakeDamage(projectileDamage);
+                        hitColliders[i].gameObject.GetComponent<EnemyHealth>().TakeDamage(projectileDamage, false);
                         hitColliders[i].gameObject.GetComponent<AITest>().TakeDamage();
                     }
                     i++;
@@ -46,7 +46,8 @@ public class Projectile : MonoBehaviour
                 if (this != null)
                 {
                     Destroy(gameObject);
-                    Instantiate(explosionVFX, transform.position, transform.rotation);
+                    GameObject VFX = Instantiate(explosionVFX, transform.position, transform.rotation);
+                    Destroy(VFX, 1f);
                 }
 
             }

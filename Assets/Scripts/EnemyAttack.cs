@@ -39,6 +39,12 @@ public class EnemyAttack : MonoBehaviour
 
                     other.gameObject.GetComponent<character_animator>().TakeDamage();
 
+                    if (this.name.Contains("TrollGiant"))
+                    {
+                        Vector3 moveDirection = this.GetComponent<Rigidbody>().transform.position - other.gameObject.GetComponent<Rigidbody>().transform.position;
+                        other.gameObject.GetComponent<Rigidbody>().AddForce(moveDirection.normalized * -50000f);
+                    }
+               
                 }
                 stayCount = 0.0f;
             }

@@ -104,7 +104,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4780327475676521510}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -191,9 +191,11 @@ MonoBehaviour:
   cur_health: 0
   spawner: {fileID: 0}
   enemy: {fileID: 4780327475676521510}
-  player: {fileID: 0}
-  healthPowerUp: {fileID: 0}
+  player: {fileID: 6081875999610839231, guid: 111ed51dc30f4476f9e15c510628810f, type: 3}
+  healthPowerUp: {fileID: 6119276590012135545, guid: bf07c68b147ef44aa98586c30cefae6f,
+    type: 3}
   staminaPowerUp: {fileID: 0}
+  magicAxePowerUp: {fileID: 100004, guid: f10a79f37ff522b4280e2844332bef77, type: 3}
   healthBar: {fileID: 8141612712582089518}
 --- !u!114 &4780327476529438656
 MonoBehaviour:
@@ -221,11 +223,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c0fa624fd051448aaf336c563f5aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 6081875999610839231, guid: 111ed51dc30f4476f9e15c510628810f, type: 3}
   speed: 3
   anim: {fileID: 0}
   isPaused: 0
-  Pause: {fileID: 0}
+  Pause: {fileID: 3368740885091666727, guid: def577b92104848bdbb1ee959eb3cdd7, type: 3}
+  enemy: {fileID: 4780327475676521510}
 --- !u!1 &4780327475676521520
 GameObject:
   m_ObjectHideFlags: 0
