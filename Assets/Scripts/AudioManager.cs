@@ -6,7 +6,6 @@ public class AudioManager : MonoBehaviour
 {
 
 	public static AudioManager instance;
-
 	public AudioMixerGroup mixerGroup;
 
 	public Sound[] sounds;
@@ -23,15 +22,18 @@ public class AudioManager : MonoBehaviour
 			DontDestroyOnLoad(gameObject);
 		}
 
-		foreach (Sound s in sounds)
-		{
-			s.source = gameObject.AddComponent<AudioSource>();
-			s.source.clip = s.clip;
-			s.source.loop = s.loop;
-            s.source.spatialBlend = s.spatialBlend;
+        foreach (Sound s in sounds)
+        {
 
-			s.source.outputAudioMixerGroup = mixerGroup;
-		}
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.loop = s.loop;
+            s.source.spatialBlend = s.spatialBlend;
+            s.source.volume = s.volume;
+
+            s.source.outputAudioMixerGroup = mixerGroup;
+        }
+
 	}
 
 	public void Play(string sound)
@@ -42,11 +44,41 @@ public class AudioManager : MonoBehaviour
 			Debug.LogWarning("Sound: " + name + " not found!");
 			return;
 		}
-
-		s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
+        s.source.volume = s.source.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
 		s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
-
 		s.source.Play();
-	}
+      
+    }
+    public void ChangeSFXVolume(float sliderValue)
+    {
+        foreach (Sound s in sounds)
+        {
+            if (!s.name.Contains("music"))
+            {
+
+                s.source.volume = sliderValue;
+
+
+            }
+      
+        }
+ 
+        
+    }
+    public void ChangeMusicVolume(float sliderValue)
+    {
+        foreach (Sound s in sounds)
+        {
+            if (s.name.Contains("music"))
+            {
+                s.source.volume = sliderValue;
+
+            }
+
+        }
+    
+
+    }
+
 
 }

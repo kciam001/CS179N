@@ -15,6 +15,7 @@ public class EnemyHealth : MonoBehaviour
     public GameObject magicAxePowerUp;
     public GameObject superKickPowerUp;
     public Image healthBar;
+
     string enemyName;
     // Start is called before the first frame update
     void Start()
@@ -81,29 +82,48 @@ public class EnemyHealth : MonoBehaviour
     }
     void SpawnPowerUp()
     {
-        int powerUp = Random.Range(0, 6);
-        Vector3 position = transform.position + new Vector3(0, -2f, 0);
-        if (powerUp == 0)
+        if (player.GetComponent<PowerUpManager>().PowerUpsEnabled())
         {
-            if(healthPowerUp != null)
-                Instantiate(healthPowerUp, position, transform.rotation);
-        }
-        else if (powerUp == 1)
-        {
-            if(staminaPowerUp != null)
-                Instantiate(staminaPowerUp, position, transform.rotation);
-        }
-        else if (powerUp == 2)
-        {
-            if(magicAxePowerUp != null)
-                Instantiate(magicAxePowerUp, position, transform.rotation);
+            if (player.GetComponent<PowerUpManager>().GetActivePowerUps() < player.GetComponent<PowerUpManager>().GetMaxActivePowerUps())
+            {
+                int powerUp = Random.Range(0, 6);
+                Vector3 position = transform.position + new Vector3(0, -2f, 0);
+                if (powerUp == 0)
+                {
+                    if (healthPowerUp != null)
+                    {
+                        Instantiate(healthPowerUp, position, transform.rotation);
+                        player.GetComponent<PowerUpManager>().IncrementActivePowerUps();
+                    }
+                }
+                else if (powerUp == 1)
+                {
+                    if (staminaPowerUp != null)
+                    {
+                        Instantiate(staminaPowerUp, position, transform.rotation);
+                        player.GetComponent<PowerUpManager>().IncrementActivePowerUps();
+                    }
+                }
+                else if (powerUp == 2)
+                {
+                    if (magicAxePowerUp != null)
+                    {
+                        Instantiate(magicAxePowerUp, position, transform.rotation);
+                        player.GetComponent<PowerUpManager>().IncrementActivePowerUps();
+                    }
 
-        }
-        else if (powerUp == 3)
-        {
-            if (superKickPowerUp != null)
-                Instantiate(superKickPowerUp, position, transform.rotation);
+                }
+                else if (powerUp == 3)
+                {
+                    if (superKickPowerUp != null)
+                    {
+                        Instantiate(superKickPowerUp, position, transform.rotation);
+                        player.GetComponent<PowerUpManager>().IncrementActivePowerUps();
+                    }
 
+                }
+
+            }
         }
 
 

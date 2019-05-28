@@ -47,11 +47,11 @@ MonoBehaviour:
   sounds:
   - name: swordswing
     clip: {fileID: 8300000, guid: 425019bf44d3b4b57a2439b00f1e84be, type: 3}
-    volume: 0.5
+    volume: 1
     volumeVariance: 0
     pitch: 1.4
     pitchVariance: 0
-    spatialBlend: 0
+    spatialBlend: 1
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
@@ -87,11 +87,11 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: playerhurt
     clip: {fileID: 8300000, guid: f5b3b59a3f2d841f782a4e1a06ff1dfd, type: 3}
-    volume: 0.5
+    volume: 1
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0.1
-    spatialBlend: 0
+    spatialBlend: 1
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
@@ -137,41 +137,41 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: trollgiantattack
     clip: {fileID: 8300000, guid: 9488820db9a1b4161b1f94954220e2c5, type: 3}
-    volume: 0.15
+    volume: 1
     volumeVariance: 0.1
     pitch: 1
     pitchVariance: 0.1
-    spatialBlend: 0
+    spatialBlend: 1
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: trollgiantdeath
     clip: {fileID: 8300000, guid: ec2d2bfbb39184418ab2d6c4c4bd97d2, type: 3}
-    volume: 0.15
+    volume: 1
     volumeVariance: 0.1
     pitch: 1
     pitchVariance: 0.1
-    spatialBlend: 0
+    spatialBlend: 1
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: footsteps
     clip: {fileID: 8300000, guid: bccf065baf3cf4c5ca8eaee0bb5aa949, type: 3}
-    volume: 0.15
+    volume: 1
     volumeVariance: 0.1
     pitch: 2.2
     pitchVariance: 0.1
-    spatialBlend: 0
+    spatialBlend: 1
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: footsteps
+  - name: powerup
     clip: {fileID: 8300000, guid: a4a9327e98855524c846cc8e2f559e96, type: 3}
-    volume: 0.15
+    volume: 1
     volumeVariance: 0.1
     pitch: 2.2
     pitchVariance: 0.1
-    spatialBlend: 0
+    spatialBlend: 1
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
