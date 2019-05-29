@@ -23,12 +23,12 @@ public class PowerUpManager : MonoBehaviour
     public void IncrementActivePowerUps()
     {
         activePowerUps += 1;
-        Debug.Log(activePowerUps);
+      //  Debug.Log(activePowerUps);
     }
     public void DecrementActivePowerUps()
     {
         activePowerUps -= 1;
-        Debug.Log(activePowerUps);
+        //Debug.Log(activePowerUps);
     }
     public void SetPowerUps()
     {

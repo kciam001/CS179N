@@ -133,6 +133,7 @@ public class character_animator : MonoBehaviour
     {
         magicAxeCharges = 5;
         magicAxeEnabled = true;
+        this.GetComponent<character>().SpecialPowerHUD();
     }
     public void TriggerChargeUse()
     {
@@ -141,6 +142,7 @@ public class character_animator : MonoBehaviour
         {
             ResetMagicAxe();
         }
+        this.GetComponent<character>().SpecialPowerHUD();
     }
     public void ResetMagicAxe()
     {

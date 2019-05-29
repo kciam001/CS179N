@@ -87,6 +87,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     ResetSuperKick();
                 }
+                this.GetComponent<character>().SpecialPowerHUD();
             }
             else
             {
@@ -126,6 +127,7 @@ public class PlayerAttack : MonoBehaviour
     {
         superKick = true;
         superKickCharges = 5;
+        this.GetComponent<character>().SpecialPowerHUD();
     }
     public void ResetSuperKick()
     {

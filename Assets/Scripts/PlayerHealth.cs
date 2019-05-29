@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
     private float max_health;
     public float cur_health;
-    public Text health_text;
+    public TextMeshProUGUI health_text;
     public Image health_bar;
     private Color green = Color.green;
     private Color yellow = Color.yellow;

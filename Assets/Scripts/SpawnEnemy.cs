@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SpawnEnemy : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class SpawnEnemy : MonoBehaviour
     public SpawnState state = SpawnState.NEWROUND;
 
     private int roundNum = 1;
-    public Text round;
+    public TextMeshProUGUI round;
     private float countdown = 3.0f;
     private float timeBetweenSpawn = 5.0f;
 

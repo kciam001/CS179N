@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class Score : MonoBehaviour
 {
-    public Text score;
+    public TextMeshProUGUI score;
     public int scoreCount = 0;
     // Start is called before the first frame update
     void Start()

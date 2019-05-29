@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class character : MonoBehaviour
 {
@@ -14,10 +15,10 @@ public class character : MonoBehaviour
     public static bool stamina_reset = false;
     Vector3 playerMovement = Vector3.zero;
 
-    public Text stamina_text;
+    public TextMeshProUGUI stamina_text;
     public Image stamina_bar;
-    public Text magicAxe_text;
-    public Text superKick_text;
+    public GameObject magicAxeIcons;
+    public GameObject superKickIcons;
     private Color red = Color.red;
     private Color green = Color.green;
     private Color yellow = Color.yellow;
@@ -41,6 +42,7 @@ public class character : MonoBehaviour
         char_anim = GetComponent<character_animator>();
         red.a = 0.3f;
         green.a = 0.3f;
+        SpecialPowerHUD();
     }
     // Update is called once per frame
     void Update()
@@ -87,7 +89,7 @@ public class character : MonoBehaviour
             Rotate();
             Move();
         }
-        SpecialPowerHUD();
+       
     }
 
     void GetInput()
@@ -190,29 +192,36 @@ public class character : MonoBehaviour
         timeLeft = 5;
         stamina = 0;
     }
-    void SpecialPowerHUD()
+    public void SpecialPowerHUD()
     {
         int magicAxeCharges = this.GetComponent<character_animator>().magicAxeCharges;
         int superKickCharges = this.GetComponent<PlayerAttack>().superKickCharges;
-        if (magicAxeCharges > 0)
-        {
-            magicAxe_text.text = "Magic Axe Charges: " + magicAxeCharges.ToString();
-            magicAxe_text.color = blue;
-        }
-        else
-        {
-            magicAxe_text.text = "";
-        }
-        if (superKickCharges > 0)
-        {
-            superKick_text.text = "Super Kick Charges " + superKickCharges.ToString();
-            superKick_text.color = yellow;
-        }
-        else
-        {
-            superKick_text.text = "";
-        }
+        UpdateSpecialPowerHUD(magicAxeCharges, magicAxeIcons);
+        UpdateSpecialPowerHUD(superKickCharges, superKickIcons);
 
+    }
+    void UpdateSpecialPowerHUD(int numCharges, GameObject specialIcons)
+    {
+        string icon;
+        Transform child;
+        for (int i = 1; i <= numCharges; i++)
+        {
+            icon = i.ToString();
+            child = specialIcons.transform.Find(icon);
+            if (child != null)
+            {
+                child.GetComponent<Image>().enabled = true;
+            }
+        }
+        for (int i = numCharges; i < 5; i++)
+        {
+            icon = (i + 1).ToString();
+            child = specialIcons.transform.Find(icon);
+            if (child != null)
+            {
+                child.GetComponent<Image>().enabled = false;
+            }
+        }
     }
 
 }
